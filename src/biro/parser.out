@@ -1,0 +1,3814 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement statement_list
+Rule 3     statement_list -> statement
+Rule 4     statement -> variable_declaration
+Rule 5     statement -> variable_assignment
+Rule 6     statement -> conditional_statement
+Rule 7     statement -> array_declaration
+Rule 8     statement -> queue_declaration
+Rule 9     statement -> stack_declaration
+Rule 10    statement -> try_block
+Rule 11    statement -> catch_block
+Rule 12    statement -> loop_statement
+Rule 13    statement -> function_declaration
+Rule 14    statement -> function_call
+Rule 15    statement -> builtin_call
+Rule 16    statement -> empty
+Rule 17    variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression
+Rule 18    variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression
+Rule 19    variable_assignment -> ID ASSIGN assigned_expression
+Rule 20    assigned_expression -> expression
+Rule 21    assigned_expression -> array_declaration
+Rule 22    assigned_expression -> queue_declaration
+Rule 23    assigned_expression -> stack_declaration
+Rule 24    array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE
+Rule 25    queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE
+Rule 26    stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE
+Rule 27    conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+Rule 28    try_block -> BIRO ATTEMPT LCURL statement_list RCURL
+Rule 29    catch_block -> BIRO ARREST LCURL statement_list RCURL
+Rule 30    loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL
+Rule 31    function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+Rule 32    function_call -> ID LPAREN expression_list RPAREN
+Rule 33    builtin_call -> BIRO DOT function_call
+Rule 34    donate_statement_list -> donate_statement donate_statement_list
+Rule 35    donate_statement_list -> donate_statement
+Rule 36    donate_statement -> statement_list
+Rule 37    donate_statement -> DONATE expression
+Rule 38    control_flow_statements_list -> control_flow_statements control_flow_statements_list
+Rule 39    control_flow_statements_list -> control_flow_statements
+Rule 40    control_flow_statements -> statement_list
+Rule 41    control_flow_statements -> LEAVE
+Rule 42    control_flow_statements -> PROCEED
+Rule 43    control_flow_statements -> DONATE expression
+Rule 44    expression -> ID
+Rule 45    expression -> STRING
+Rule 46    expression -> NUMBER
+Rule 47    expression -> TRUE
+Rule 48    expression -> FALSE
+Rule 49    expression -> builtin_call
+Rule 50    expression -> function_call
+Rule 51    expression -> expression PLUS expression
+Rule 52    expression -> expression MINUS expression
+Rule 53    expression -> expression ASTERISK expression
+Rule 54    expression -> expression DIVIDE expression
+Rule 55    expression -> expression EQUALS expression
+Rule 56    expression -> expression MORE expression
+Rule 57    expression -> expression LESS expression
+Rule 58    expression -> expression AND expression
+Rule 59    expression -> expression OR expression
+Rule 60    expression_list -> expression COMMA expression_list
+Rule 61    expression_list -> expression
+Rule 62    expression_list -> empty
+Rule 63    arg_list -> ID COMMA arg_list
+Rule 64    arg_list -> ID
+Rule 65    arg_list -> empty
+Rule 66    type_list -> type COMMA type_list
+Rule 67    type_list -> type
+Rule 68    type_list -> empty
+Rule 69    type -> NUM
+Rule 70    type -> STR
+Rule 71    type -> BOOL
+Rule 72    type -> LITERAL_A LSQUARE NUM RSQUARE
+Rule 73    type -> LITERAL_A LSQUARE STR RSQUARE
+Rule 74    type -> LITERAL_A LSQUARE BOOL RSQUARE
+Rule 75    type -> LITERAL_Q LSQUARE NUM RSQUARE
+Rule 76    type -> LITERAL_Q LSQUARE STR RSQUARE
+Rule 77    type -> LITERAL_Q LSQUARE BOOL RSQUARE
+Rule 78    type -> LITERAL_S LSQUARE NUM RSQUARE
+Rule 79    type -> LITERAL_S LSQUARE STR RSQUARE
+Rule 80    type -> LITERAL_S LSQUARE BOOL RSQUARE
+Rule 81    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 58
+ARREST               : 29
+ASSIGN               : 17 18 19
+ASTERISK             : 53
+ATTEMPT              : 28
+BIRO                 : 17 27 28 29 30 31 33
+BOOL                 : 71 74 77 80
+COLON                : 17 18 31
+COMMA                : 60 63 66
+DIVIDE               : 54
+DONATE               : 37 43
+DOT                  : 33
+EQUALS               : 55
+FALSE                : 48
+ID                   : 17 18 19 31 32 44 63 64
+IS                   : 27
+LCURL                : 27 28 29 30 31
+LEAVE                : 41
+LESS                 : 57
+LITERAL_A            : 24 72 73 74
+LITERAL_Q            : 25 75 76 77
+LITERAL_S            : 26 78 79 80
+LOOP                 : 30
+LPAREN               : 31 31 32
+LSQUARE              : 24 25 26 72 73 74 75 76 77 78 79 80
+MINUS                : 52
+MORE                 : 56
+NUM                  : 69 72 75 78
+NUMBER               : 46
+OR                   : 59
+PLUS                 : 51
+PROCEED              : 42
+QUESMARK             : 27
+RCURL                : 27 28 29 30 31
+RPAREN               : 31 31 32
+RSQUARE              : 24 25 26 72 73 74 75 76 77 78 79 80
+SMALLBIRO            : 18
+STR                  : 70 73 76 79
+STRING               : 45
+TRUE                 : 47
+error                : 
+
+Nonterminals, with rules where they appear
+
+arg_list             : 31 63
+array_declaration    : 7 21
+assigned_expression  : 17 18 19
+builtin_call         : 15 49
+catch_block          : 11
+conditional_statement : 6
+control_flow_statements : 38 39
+control_flow_statements_list : 27 30 38
+donate_statement     : 34 35
+donate_statement_list : 31 34
+empty                : 16 62 65 68
+expression           : 20 27 37 43 51 51 52 52 53 53 54 54 55 55 56 56 57 57 58 58 59 59 60 61
+expression_list      : 24 25 26 32 60
+function_call        : 14 33 50
+function_declaration : 13
+loop_statement       : 12
+program              : 0
+queue_declaration    : 8 22
+stack_declaration    : 9 23
+statement            : 2 3
+statement_list       : 1 2 28 29 36 40
+try_block            : 10
+type                 : 17 18 66 67
+type_list            : 31 66
+variable_assignment  : 5
+variable_declaration : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    $end            reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+
+    $end            reduce using rule 1 (program -> statement_list .)
+
+
+state 3
+
+    (2) statement_list -> statement . statement_list
+    (3) statement_list -> statement .
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for RCURL resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for LEAVE resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for PROCEED resolved using rule 3 (statement_list -> statement .)
+  ! reduce/reduce conflict for DONATE resolved using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+    RCURL           reduce using rule 3 (statement_list -> statement .)
+    LEAVE           reduce using rule 3 (statement_list -> statement .)
+    PROCEED         reduce using rule 3 (statement_list -> statement .)
+    DONATE          reduce using rule 3 (statement_list -> statement .)
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+
+  ! BIRO            [ reduce using rule 3 (statement_list -> statement .) ]
+  ! SMALLBIRO       [ reduce using rule 3 (statement_list -> statement .) ]
+  ! ID              [ reduce using rule 3 (statement_list -> statement .) ]
+  ! LITERAL_A       [ reduce using rule 3 (statement_list -> statement .) ]
+  ! LITERAL_Q       [ reduce using rule 3 (statement_list -> statement .) ]
+  ! LITERAL_S       [ reduce using rule 3 (statement_list -> statement .) ]
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! $end            [ reduce using rule 81 (empty -> .) ]
+  ! RCURL           [ reduce using rule 81 (empty -> .) ]
+  ! LEAVE           [ reduce using rule 81 (empty -> .) ]
+  ! PROCEED         [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+
+    statement                      shift and go to state 3
+    statement_list                 shift and go to state 23
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 4
+
+    (4) statement -> variable_declaration .
+
+    BIRO            reduce using rule 4 (statement -> variable_declaration .)
+    SMALLBIRO       reduce using rule 4 (statement -> variable_declaration .)
+    ID              reduce using rule 4 (statement -> variable_declaration .)
+    LITERAL_A       reduce using rule 4 (statement -> variable_declaration .)
+    LITERAL_Q       reduce using rule 4 (statement -> variable_declaration .)
+    LITERAL_S       reduce using rule 4 (statement -> variable_declaration .)
+    $end            reduce using rule 4 (statement -> variable_declaration .)
+    RCURL           reduce using rule 4 (statement -> variable_declaration .)
+    LEAVE           reduce using rule 4 (statement -> variable_declaration .)
+    PROCEED         reduce using rule 4 (statement -> variable_declaration .)
+    DONATE          reduce using rule 4 (statement -> variable_declaration .)
+
+
+state 5
+
+    (5) statement -> variable_assignment .
+
+    BIRO            reduce using rule 5 (statement -> variable_assignment .)
+    SMALLBIRO       reduce using rule 5 (statement -> variable_assignment .)
+    ID              reduce using rule 5 (statement -> variable_assignment .)
+    LITERAL_A       reduce using rule 5 (statement -> variable_assignment .)
+    LITERAL_Q       reduce using rule 5 (statement -> variable_assignment .)
+    LITERAL_S       reduce using rule 5 (statement -> variable_assignment .)
+    $end            reduce using rule 5 (statement -> variable_assignment .)
+    RCURL           reduce using rule 5 (statement -> variable_assignment .)
+    LEAVE           reduce using rule 5 (statement -> variable_assignment .)
+    PROCEED         reduce using rule 5 (statement -> variable_assignment .)
+    DONATE          reduce using rule 5 (statement -> variable_assignment .)
+
+
+state 6
+
+    (6) statement -> conditional_statement .
+
+    BIRO            reduce using rule 6 (statement -> conditional_statement .)
+    SMALLBIRO       reduce using rule 6 (statement -> conditional_statement .)
+    ID              reduce using rule 6 (statement -> conditional_statement .)
+    LITERAL_A       reduce using rule 6 (statement -> conditional_statement .)
+    LITERAL_Q       reduce using rule 6 (statement -> conditional_statement .)
+    LITERAL_S       reduce using rule 6 (statement -> conditional_statement .)
+    $end            reduce using rule 6 (statement -> conditional_statement .)
+    RCURL           reduce using rule 6 (statement -> conditional_statement .)
+    LEAVE           reduce using rule 6 (statement -> conditional_statement .)
+    PROCEED         reduce using rule 6 (statement -> conditional_statement .)
+    DONATE          reduce using rule 6 (statement -> conditional_statement .)
+
+
+state 7
+
+    (7) statement -> array_declaration .
+
+    BIRO            reduce using rule 7 (statement -> array_declaration .)
+    SMALLBIRO       reduce using rule 7 (statement -> array_declaration .)
+    ID              reduce using rule 7 (statement -> array_declaration .)
+    LITERAL_A       reduce using rule 7 (statement -> array_declaration .)
+    LITERAL_Q       reduce using rule 7 (statement -> array_declaration .)
+    LITERAL_S       reduce using rule 7 (statement -> array_declaration .)
+    $end            reduce using rule 7 (statement -> array_declaration .)
+    RCURL           reduce using rule 7 (statement -> array_declaration .)
+    LEAVE           reduce using rule 7 (statement -> array_declaration .)
+    PROCEED         reduce using rule 7 (statement -> array_declaration .)
+    DONATE          reduce using rule 7 (statement -> array_declaration .)
+
+
+state 8
+
+    (8) statement -> queue_declaration .
+
+    BIRO            reduce using rule 8 (statement -> queue_declaration .)
+    SMALLBIRO       reduce using rule 8 (statement -> queue_declaration .)
+    ID              reduce using rule 8 (statement -> queue_declaration .)
+    LITERAL_A       reduce using rule 8 (statement -> queue_declaration .)
+    LITERAL_Q       reduce using rule 8 (statement -> queue_declaration .)
+    LITERAL_S       reduce using rule 8 (statement -> queue_declaration .)
+    $end            reduce using rule 8 (statement -> queue_declaration .)
+    RCURL           reduce using rule 8 (statement -> queue_declaration .)
+    LEAVE           reduce using rule 8 (statement -> queue_declaration .)
+    PROCEED         reduce using rule 8 (statement -> queue_declaration .)
+    DONATE          reduce using rule 8 (statement -> queue_declaration .)
+
+
+state 9
+
+    (9) statement -> stack_declaration .
+
+    BIRO            reduce using rule 9 (statement -> stack_declaration .)
+    SMALLBIRO       reduce using rule 9 (statement -> stack_declaration .)
+    ID              reduce using rule 9 (statement -> stack_declaration .)
+    LITERAL_A       reduce using rule 9 (statement -> stack_declaration .)
+    LITERAL_Q       reduce using rule 9 (statement -> stack_declaration .)
+    LITERAL_S       reduce using rule 9 (statement -> stack_declaration .)
+    $end            reduce using rule 9 (statement -> stack_declaration .)
+    RCURL           reduce using rule 9 (statement -> stack_declaration .)
+    LEAVE           reduce using rule 9 (statement -> stack_declaration .)
+    PROCEED         reduce using rule 9 (statement -> stack_declaration .)
+    DONATE          reduce using rule 9 (statement -> stack_declaration .)
+
+
+state 10
+
+    (10) statement -> try_block .
+
+    BIRO            reduce using rule 10 (statement -> try_block .)
+    SMALLBIRO       reduce using rule 10 (statement -> try_block .)
+    ID              reduce using rule 10 (statement -> try_block .)
+    LITERAL_A       reduce using rule 10 (statement -> try_block .)
+    LITERAL_Q       reduce using rule 10 (statement -> try_block .)
+    LITERAL_S       reduce using rule 10 (statement -> try_block .)
+    $end            reduce using rule 10 (statement -> try_block .)
+    RCURL           reduce using rule 10 (statement -> try_block .)
+    LEAVE           reduce using rule 10 (statement -> try_block .)
+    PROCEED         reduce using rule 10 (statement -> try_block .)
+    DONATE          reduce using rule 10 (statement -> try_block .)
+
+
+state 11
+
+    (11) statement -> catch_block .
+
+    BIRO            reduce using rule 11 (statement -> catch_block .)
+    SMALLBIRO       reduce using rule 11 (statement -> catch_block .)
+    ID              reduce using rule 11 (statement -> catch_block .)
+    LITERAL_A       reduce using rule 11 (statement -> catch_block .)
+    LITERAL_Q       reduce using rule 11 (statement -> catch_block .)
+    LITERAL_S       reduce using rule 11 (statement -> catch_block .)
+    $end            reduce using rule 11 (statement -> catch_block .)
+    RCURL           reduce using rule 11 (statement -> catch_block .)
+    LEAVE           reduce using rule 11 (statement -> catch_block .)
+    PROCEED         reduce using rule 11 (statement -> catch_block .)
+    DONATE          reduce using rule 11 (statement -> catch_block .)
+
+
+state 12
+
+    (12) statement -> loop_statement .
+
+    BIRO            reduce using rule 12 (statement -> loop_statement .)
+    SMALLBIRO       reduce using rule 12 (statement -> loop_statement .)
+    ID              reduce using rule 12 (statement -> loop_statement .)
+    LITERAL_A       reduce using rule 12 (statement -> loop_statement .)
+    LITERAL_Q       reduce using rule 12 (statement -> loop_statement .)
+    LITERAL_S       reduce using rule 12 (statement -> loop_statement .)
+    $end            reduce using rule 12 (statement -> loop_statement .)
+    RCURL           reduce using rule 12 (statement -> loop_statement .)
+    LEAVE           reduce using rule 12 (statement -> loop_statement .)
+    PROCEED         reduce using rule 12 (statement -> loop_statement .)
+    DONATE          reduce using rule 12 (statement -> loop_statement .)
+
+
+state 13
+
+    (13) statement -> function_declaration .
+
+    BIRO            reduce using rule 13 (statement -> function_declaration .)
+    SMALLBIRO       reduce using rule 13 (statement -> function_declaration .)
+    ID              reduce using rule 13 (statement -> function_declaration .)
+    LITERAL_A       reduce using rule 13 (statement -> function_declaration .)
+    LITERAL_Q       reduce using rule 13 (statement -> function_declaration .)
+    LITERAL_S       reduce using rule 13 (statement -> function_declaration .)
+    $end            reduce using rule 13 (statement -> function_declaration .)
+    RCURL           reduce using rule 13 (statement -> function_declaration .)
+    LEAVE           reduce using rule 13 (statement -> function_declaration .)
+    PROCEED         reduce using rule 13 (statement -> function_declaration .)
+    DONATE          reduce using rule 13 (statement -> function_declaration .)
+
+
+state 14
+
+    (14) statement -> function_call .
+
+    BIRO            reduce using rule 14 (statement -> function_call .)
+    SMALLBIRO       reduce using rule 14 (statement -> function_call .)
+    ID              reduce using rule 14 (statement -> function_call .)
+    LITERAL_A       reduce using rule 14 (statement -> function_call .)
+    LITERAL_Q       reduce using rule 14 (statement -> function_call .)
+    LITERAL_S       reduce using rule 14 (statement -> function_call .)
+    $end            reduce using rule 14 (statement -> function_call .)
+    RCURL           reduce using rule 14 (statement -> function_call .)
+    LEAVE           reduce using rule 14 (statement -> function_call .)
+    PROCEED         reduce using rule 14 (statement -> function_call .)
+    DONATE          reduce using rule 14 (statement -> function_call .)
+
+
+state 15
+
+    (15) statement -> builtin_call .
+
+    BIRO            reduce using rule 15 (statement -> builtin_call .)
+    SMALLBIRO       reduce using rule 15 (statement -> builtin_call .)
+    ID              reduce using rule 15 (statement -> builtin_call .)
+    LITERAL_A       reduce using rule 15 (statement -> builtin_call .)
+    LITERAL_Q       reduce using rule 15 (statement -> builtin_call .)
+    LITERAL_S       reduce using rule 15 (statement -> builtin_call .)
+    $end            reduce using rule 15 (statement -> builtin_call .)
+    RCURL           reduce using rule 15 (statement -> builtin_call .)
+    LEAVE           reduce using rule 15 (statement -> builtin_call .)
+    PROCEED         reduce using rule 15 (statement -> builtin_call .)
+    DONATE          reduce using rule 15 (statement -> builtin_call .)
+
+
+state 16
+
+    (16) statement -> empty .
+
+    BIRO            reduce using rule 16 (statement -> empty .)
+    SMALLBIRO       reduce using rule 16 (statement -> empty .)
+    ID              reduce using rule 16 (statement -> empty .)
+    LITERAL_A       reduce using rule 16 (statement -> empty .)
+    LITERAL_Q       reduce using rule 16 (statement -> empty .)
+    LITERAL_S       reduce using rule 16 (statement -> empty .)
+    $end            reduce using rule 16 (statement -> empty .)
+    RCURL           reduce using rule 16 (statement -> empty .)
+    LEAVE           reduce using rule 16 (statement -> empty .)
+    PROCEED         reduce using rule 16 (statement -> empty .)
+    DONATE          reduce using rule 16 (statement -> empty .)
+
+
+state 17
+
+    (17) variable_declaration -> BIRO . ID COLON type ASSIGN assigned_expression
+    (27) conditional_statement -> BIRO . IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (28) try_block -> BIRO . ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> BIRO . ARREST LCURL statement_list RCURL
+    (30) loop_statement -> BIRO . LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> BIRO . ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (33) builtin_call -> BIRO . DOT function_call
+
+    ID              shift and go to state 24
+    IS              shift and go to state 25
+    ATTEMPT         shift and go to state 26
+    ARREST          shift and go to state 27
+    LOOP            shift and go to state 28
+    DOT             shift and go to state 29
+
+
+state 18
+
+    (19) variable_assignment -> ID . ASSIGN assigned_expression
+    (32) function_call -> ID . LPAREN expression_list RPAREN
+
+    ASSIGN          shift and go to state 30
+    LPAREN          shift and go to state 31
+
+
+state 19
+
+    (18) variable_declaration -> SMALLBIRO . ID COLON type ASSIGN assigned_expression
+
+    ID              shift and go to state 32
+
+
+state 20
+
+    (24) array_declaration -> LITERAL_A . LSQUARE expression_list RSQUARE
+
+    LSQUARE         shift and go to state 33
+
+
+state 21
+
+    (25) queue_declaration -> LITERAL_Q . LSQUARE expression_list RSQUARE
+
+    LSQUARE         shift and go to state 34
+
+
+state 22
+
+    (26) stack_declaration -> LITERAL_S . LSQUARE expression_list RSQUARE
+
+    LSQUARE         shift and go to state 35
+
+
+state 23
+
+    (2) statement_list -> statement statement_list .
+
+    $end            reduce using rule 2 (statement_list -> statement statement_list .)
+    RCURL           reduce using rule 2 (statement_list -> statement statement_list .)
+    LEAVE           reduce using rule 2 (statement_list -> statement statement_list .)
+    PROCEED         reduce using rule 2 (statement_list -> statement statement_list .)
+    DONATE          reduce using rule 2 (statement_list -> statement statement_list .)
+    BIRO            reduce using rule 2 (statement_list -> statement statement_list .)
+    SMALLBIRO       reduce using rule 2 (statement_list -> statement statement_list .)
+    ID              reduce using rule 2 (statement_list -> statement statement_list .)
+    LITERAL_A       reduce using rule 2 (statement_list -> statement statement_list .)
+    LITERAL_Q       reduce using rule 2 (statement_list -> statement statement_list .)
+    LITERAL_S       reduce using rule 2 (statement_list -> statement statement_list .)
+
+
+state 24
+
+    (17) variable_declaration -> BIRO ID . COLON type ASSIGN assigned_expression
+    (31) function_declaration -> BIRO ID . LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+
+    COLON           shift and go to state 36
+    LPAREN          shift and go to state 37
+
+
+state 25
+
+    (27) conditional_statement -> BIRO IS . expression QUESMARK LCURL control_flow_statements_list RCURL
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 39
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 26
+
+    (28) try_block -> BIRO ATTEMPT . LCURL statement_list RCURL
+
+    LCURL           shift and go to state 47
+
+
+state 27
+
+    (29) catch_block -> BIRO ARREST . LCURL statement_list RCURL
+
+    LCURL           shift and go to state 48
+
+
+state 28
+
+    (30) loop_statement -> BIRO LOOP . LCURL control_flow_statements_list RCURL
+
+    LCURL           shift and go to state 49
+
+
+state 29
+
+    (33) builtin_call -> BIRO DOT . function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 51
+
+    function_call                  shift and go to state 50
+
+state 30
+
+    (19) variable_assignment -> ID ASSIGN . assigned_expression
+    (20) assigned_expression -> . expression
+    (21) assigned_expression -> . array_declaration
+    (22) assigned_expression -> . queue_declaration
+    (23) assigned_expression -> . stack_declaration
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    BIRO            shift and go to state 38
+
+    assigned_expression            shift and go to state 52
+    expression                     shift and go to state 53
+    array_declaration              shift and go to state 54
+    queue_declaration              shift and go to state 55
+    stack_declaration              shift and go to state 56
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 31
+
+    (32) function_call -> ID LPAREN . expression_list RPAREN
+    (60) expression_list -> . expression COMMA expression_list
+    (61) expression_list -> . expression
+    (62) expression_list -> . empty
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (81) empty -> .
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    RPAREN          reduce using rule 81 (empty -> .)
+    BIRO            shift and go to state 38
+
+    expression_list                shift and go to state 57
+    expression                     shift and go to state 58
+    empty                          shift and go to state 59
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 32
+
+    (18) variable_declaration -> SMALLBIRO ID . COLON type ASSIGN assigned_expression
+
+    COLON           shift and go to state 60
+
+
+state 33
+
+    (24) array_declaration -> LITERAL_A LSQUARE . expression_list RSQUARE
+    (60) expression_list -> . expression COMMA expression_list
+    (61) expression_list -> . expression
+    (62) expression_list -> . empty
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (81) empty -> .
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    RSQUARE         reduce using rule 81 (empty -> .)
+    BIRO            shift and go to state 38
+
+    expression_list                shift and go to state 61
+    expression                     shift and go to state 58
+    empty                          shift and go to state 59
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 34
+
+    (25) queue_declaration -> LITERAL_Q LSQUARE . expression_list RSQUARE
+    (60) expression_list -> . expression COMMA expression_list
+    (61) expression_list -> . expression
+    (62) expression_list -> . empty
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (81) empty -> .
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    RSQUARE         reduce using rule 81 (empty -> .)
+    BIRO            shift and go to state 38
+
+    expression_list                shift and go to state 62
+    expression                     shift and go to state 58
+    empty                          shift and go to state 59
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 35
+
+    (26) stack_declaration -> LITERAL_S LSQUARE . expression_list RSQUARE
+    (60) expression_list -> . expression COMMA expression_list
+    (61) expression_list -> . expression
+    (62) expression_list -> . empty
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (81) empty -> .
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    RSQUARE         reduce using rule 81 (empty -> .)
+    BIRO            shift and go to state 38
+
+    expression_list                shift and go to state 63
+    expression                     shift and go to state 58
+    empty                          shift and go to state 59
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 36
+
+    (17) variable_declaration -> BIRO ID COLON . type ASSIGN assigned_expression
+    (69) type -> . NUM
+    (70) type -> . STR
+    (71) type -> . BOOL
+    (72) type -> . LITERAL_A LSQUARE NUM RSQUARE
+    (73) type -> . LITERAL_A LSQUARE STR RSQUARE
+    (74) type -> . LITERAL_A LSQUARE BOOL RSQUARE
+    (75) type -> . LITERAL_Q LSQUARE NUM RSQUARE
+    (76) type -> . LITERAL_Q LSQUARE STR RSQUARE
+    (77) type -> . LITERAL_Q LSQUARE BOOL RSQUARE
+    (78) type -> . LITERAL_S LSQUARE NUM RSQUARE
+    (79) type -> . LITERAL_S LSQUARE STR RSQUARE
+    (80) type -> . LITERAL_S LSQUARE BOOL RSQUARE
+
+    NUM             shift and go to state 65
+    STR             shift and go to state 66
+    BOOL            shift and go to state 67
+    LITERAL_A       shift and go to state 68
+    LITERAL_Q       shift and go to state 69
+    LITERAL_S       shift and go to state 70
+
+    type                           shift and go to state 64
+
+state 37
+
+    (31) function_declaration -> BIRO ID LPAREN . arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (63) arg_list -> . ID COMMA arg_list
+    (64) arg_list -> . ID
+    (65) arg_list -> . empty
+    (81) empty -> .
+
+    ID              shift and go to state 71
+    RPAREN          reduce using rule 81 (empty -> .)
+
+    arg_list                       shift and go to state 72
+    empty                          shift and go to state 73
+
+state 38
+
+    (33) builtin_call -> BIRO . DOT function_call
+
+    DOT             shift and go to state 29
+
+
+state 39
+
+    (27) conditional_statement -> BIRO IS expression . QUESMARK LCURL control_flow_statements_list RCURL
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        shift and go to state 74
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    EQUALS          shift and go to state 79
+    MORE            shift and go to state 80
+    LESS            shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+
+state 40
+
+    (44) expression -> ID .
+    (32) function_call -> ID . LPAREN expression_list RPAREN
+
+    QUESMARK        reduce using rule 44 (expression -> ID .)
+    PLUS            reduce using rule 44 (expression -> ID .)
+    MINUS           reduce using rule 44 (expression -> ID .)
+    ASTERISK        reduce using rule 44 (expression -> ID .)
+    DIVIDE          reduce using rule 44 (expression -> ID .)
+    EQUALS          reduce using rule 44 (expression -> ID .)
+    MORE            reduce using rule 44 (expression -> ID .)
+    LESS            reduce using rule 44 (expression -> ID .)
+    AND             reduce using rule 44 (expression -> ID .)
+    OR              reduce using rule 44 (expression -> ID .)
+    BIRO            reduce using rule 44 (expression -> ID .)
+    SMALLBIRO       reduce using rule 44 (expression -> ID .)
+    ID              reduce using rule 44 (expression -> ID .)
+    LITERAL_A       reduce using rule 44 (expression -> ID .)
+    LITERAL_Q       reduce using rule 44 (expression -> ID .)
+    LITERAL_S       reduce using rule 44 (expression -> ID .)
+    $end            reduce using rule 44 (expression -> ID .)
+    RCURL           reduce using rule 44 (expression -> ID .)
+    LEAVE           reduce using rule 44 (expression -> ID .)
+    PROCEED         reduce using rule 44 (expression -> ID .)
+    DONATE          reduce using rule 44 (expression -> ID .)
+    COMMA           reduce using rule 44 (expression -> ID .)
+    RPAREN          reduce using rule 44 (expression -> ID .)
+    RSQUARE         reduce using rule 44 (expression -> ID .)
+    LPAREN          shift and go to state 31
+
+
+state 41
+
+    (45) expression -> STRING .
+
+    QUESMARK        reduce using rule 45 (expression -> STRING .)
+    PLUS            reduce using rule 45 (expression -> STRING .)
+    MINUS           reduce using rule 45 (expression -> STRING .)
+    ASTERISK        reduce using rule 45 (expression -> STRING .)
+    DIVIDE          reduce using rule 45 (expression -> STRING .)
+    EQUALS          reduce using rule 45 (expression -> STRING .)
+    MORE            reduce using rule 45 (expression -> STRING .)
+    LESS            reduce using rule 45 (expression -> STRING .)
+    AND             reduce using rule 45 (expression -> STRING .)
+    OR              reduce using rule 45 (expression -> STRING .)
+    BIRO            reduce using rule 45 (expression -> STRING .)
+    SMALLBIRO       reduce using rule 45 (expression -> STRING .)
+    ID              reduce using rule 45 (expression -> STRING .)
+    LITERAL_A       reduce using rule 45 (expression -> STRING .)
+    LITERAL_Q       reduce using rule 45 (expression -> STRING .)
+    LITERAL_S       reduce using rule 45 (expression -> STRING .)
+    $end            reduce using rule 45 (expression -> STRING .)
+    RCURL           reduce using rule 45 (expression -> STRING .)
+    LEAVE           reduce using rule 45 (expression -> STRING .)
+    PROCEED         reduce using rule 45 (expression -> STRING .)
+    DONATE          reduce using rule 45 (expression -> STRING .)
+    COMMA           reduce using rule 45 (expression -> STRING .)
+    RPAREN          reduce using rule 45 (expression -> STRING .)
+    RSQUARE         reduce using rule 45 (expression -> STRING .)
+
+
+state 42
+
+    (46) expression -> NUMBER .
+
+    QUESMARK        reduce using rule 46 (expression -> NUMBER .)
+    PLUS            reduce using rule 46 (expression -> NUMBER .)
+    MINUS           reduce using rule 46 (expression -> NUMBER .)
+    ASTERISK        reduce using rule 46 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 46 (expression -> NUMBER .)
+    EQUALS          reduce using rule 46 (expression -> NUMBER .)
+    MORE            reduce using rule 46 (expression -> NUMBER .)
+    LESS            reduce using rule 46 (expression -> NUMBER .)
+    AND             reduce using rule 46 (expression -> NUMBER .)
+    OR              reduce using rule 46 (expression -> NUMBER .)
+    BIRO            reduce using rule 46 (expression -> NUMBER .)
+    SMALLBIRO       reduce using rule 46 (expression -> NUMBER .)
+    ID              reduce using rule 46 (expression -> NUMBER .)
+    LITERAL_A       reduce using rule 46 (expression -> NUMBER .)
+    LITERAL_Q       reduce using rule 46 (expression -> NUMBER .)
+    LITERAL_S       reduce using rule 46 (expression -> NUMBER .)
+    $end            reduce using rule 46 (expression -> NUMBER .)
+    RCURL           reduce using rule 46 (expression -> NUMBER .)
+    LEAVE           reduce using rule 46 (expression -> NUMBER .)
+    PROCEED         reduce using rule 46 (expression -> NUMBER .)
+    DONATE          reduce using rule 46 (expression -> NUMBER .)
+    COMMA           reduce using rule 46 (expression -> NUMBER .)
+    RPAREN          reduce using rule 46 (expression -> NUMBER .)
+    RSQUARE         reduce using rule 46 (expression -> NUMBER .)
+
+
+state 43
+
+    (47) expression -> TRUE .
+
+    QUESMARK        reduce using rule 47 (expression -> TRUE .)
+    PLUS            reduce using rule 47 (expression -> TRUE .)
+    MINUS           reduce using rule 47 (expression -> TRUE .)
+    ASTERISK        reduce using rule 47 (expression -> TRUE .)
+    DIVIDE          reduce using rule 47 (expression -> TRUE .)
+    EQUALS          reduce using rule 47 (expression -> TRUE .)
+    MORE            reduce using rule 47 (expression -> TRUE .)
+    LESS            reduce using rule 47 (expression -> TRUE .)
+    AND             reduce using rule 47 (expression -> TRUE .)
+    OR              reduce using rule 47 (expression -> TRUE .)
+    BIRO            reduce using rule 47 (expression -> TRUE .)
+    SMALLBIRO       reduce using rule 47 (expression -> TRUE .)
+    ID              reduce using rule 47 (expression -> TRUE .)
+    LITERAL_A       reduce using rule 47 (expression -> TRUE .)
+    LITERAL_Q       reduce using rule 47 (expression -> TRUE .)
+    LITERAL_S       reduce using rule 47 (expression -> TRUE .)
+    $end            reduce using rule 47 (expression -> TRUE .)
+    RCURL           reduce using rule 47 (expression -> TRUE .)
+    LEAVE           reduce using rule 47 (expression -> TRUE .)
+    PROCEED         reduce using rule 47 (expression -> TRUE .)
+    DONATE          reduce using rule 47 (expression -> TRUE .)
+    COMMA           reduce using rule 47 (expression -> TRUE .)
+    RPAREN          reduce using rule 47 (expression -> TRUE .)
+    RSQUARE         reduce using rule 47 (expression -> TRUE .)
+
+
+state 44
+
+    (48) expression -> FALSE .
+
+    QUESMARK        reduce using rule 48 (expression -> FALSE .)
+    PLUS            reduce using rule 48 (expression -> FALSE .)
+    MINUS           reduce using rule 48 (expression -> FALSE .)
+    ASTERISK        reduce using rule 48 (expression -> FALSE .)
+    DIVIDE          reduce using rule 48 (expression -> FALSE .)
+    EQUALS          reduce using rule 48 (expression -> FALSE .)
+    MORE            reduce using rule 48 (expression -> FALSE .)
+    LESS            reduce using rule 48 (expression -> FALSE .)
+    AND             reduce using rule 48 (expression -> FALSE .)
+    OR              reduce using rule 48 (expression -> FALSE .)
+    BIRO            reduce using rule 48 (expression -> FALSE .)
+    SMALLBIRO       reduce using rule 48 (expression -> FALSE .)
+    ID              reduce using rule 48 (expression -> FALSE .)
+    LITERAL_A       reduce using rule 48 (expression -> FALSE .)
+    LITERAL_Q       reduce using rule 48 (expression -> FALSE .)
+    LITERAL_S       reduce using rule 48 (expression -> FALSE .)
+    $end            reduce using rule 48 (expression -> FALSE .)
+    RCURL           reduce using rule 48 (expression -> FALSE .)
+    LEAVE           reduce using rule 48 (expression -> FALSE .)
+    PROCEED         reduce using rule 48 (expression -> FALSE .)
+    DONATE          reduce using rule 48 (expression -> FALSE .)
+    COMMA           reduce using rule 48 (expression -> FALSE .)
+    RPAREN          reduce using rule 48 (expression -> FALSE .)
+    RSQUARE         reduce using rule 48 (expression -> FALSE .)
+
+
+state 45
+
+    (49) expression -> builtin_call .
+
+    QUESMARK        reduce using rule 49 (expression -> builtin_call .)
+    PLUS            reduce using rule 49 (expression -> builtin_call .)
+    MINUS           reduce using rule 49 (expression -> builtin_call .)
+    ASTERISK        reduce using rule 49 (expression -> builtin_call .)
+    DIVIDE          reduce using rule 49 (expression -> builtin_call .)
+    EQUALS          reduce using rule 49 (expression -> builtin_call .)
+    MORE            reduce using rule 49 (expression -> builtin_call .)
+    LESS            reduce using rule 49 (expression -> builtin_call .)
+    AND             reduce using rule 49 (expression -> builtin_call .)
+    OR              reduce using rule 49 (expression -> builtin_call .)
+    BIRO            reduce using rule 49 (expression -> builtin_call .)
+    SMALLBIRO       reduce using rule 49 (expression -> builtin_call .)
+    ID              reduce using rule 49 (expression -> builtin_call .)
+    LITERAL_A       reduce using rule 49 (expression -> builtin_call .)
+    LITERAL_Q       reduce using rule 49 (expression -> builtin_call .)
+    LITERAL_S       reduce using rule 49 (expression -> builtin_call .)
+    $end            reduce using rule 49 (expression -> builtin_call .)
+    RCURL           reduce using rule 49 (expression -> builtin_call .)
+    LEAVE           reduce using rule 49 (expression -> builtin_call .)
+    PROCEED         reduce using rule 49 (expression -> builtin_call .)
+    DONATE          reduce using rule 49 (expression -> builtin_call .)
+    COMMA           reduce using rule 49 (expression -> builtin_call .)
+    RPAREN          reduce using rule 49 (expression -> builtin_call .)
+    RSQUARE         reduce using rule 49 (expression -> builtin_call .)
+
+
+state 46
+
+    (50) expression -> function_call .
+
+    QUESMARK        reduce using rule 50 (expression -> function_call .)
+    PLUS            reduce using rule 50 (expression -> function_call .)
+    MINUS           reduce using rule 50 (expression -> function_call .)
+    ASTERISK        reduce using rule 50 (expression -> function_call .)
+    DIVIDE          reduce using rule 50 (expression -> function_call .)
+    EQUALS          reduce using rule 50 (expression -> function_call .)
+    MORE            reduce using rule 50 (expression -> function_call .)
+    LESS            reduce using rule 50 (expression -> function_call .)
+    AND             reduce using rule 50 (expression -> function_call .)
+    OR              reduce using rule 50 (expression -> function_call .)
+    BIRO            reduce using rule 50 (expression -> function_call .)
+    SMALLBIRO       reduce using rule 50 (expression -> function_call .)
+    ID              reduce using rule 50 (expression -> function_call .)
+    LITERAL_A       reduce using rule 50 (expression -> function_call .)
+    LITERAL_Q       reduce using rule 50 (expression -> function_call .)
+    LITERAL_S       reduce using rule 50 (expression -> function_call .)
+    $end            reduce using rule 50 (expression -> function_call .)
+    RCURL           reduce using rule 50 (expression -> function_call .)
+    LEAVE           reduce using rule 50 (expression -> function_call .)
+    PROCEED         reduce using rule 50 (expression -> function_call .)
+    DONATE          reduce using rule 50 (expression -> function_call .)
+    COMMA           reduce using rule 50 (expression -> function_call .)
+    RPAREN          reduce using rule 50 (expression -> function_call .)
+    RSQUARE         reduce using rule 50 (expression -> function_call .)
+
+
+state 47
+
+    (28) try_block -> BIRO ATTEMPT LCURL . statement_list RCURL
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    RCURL           reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+
+    statement_list                 shift and go to state 84
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 48
+
+    (29) catch_block -> BIRO ARREST LCURL . statement_list RCURL
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    RCURL           reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+
+    statement_list                 shift and go to state 85
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 49
+
+    (30) loop_statement -> BIRO LOOP LCURL . control_flow_statements_list RCURL
+    (38) control_flow_statements_list -> . control_flow_statements control_flow_statements_list
+    (39) control_flow_statements_list -> . control_flow_statements
+    (40) control_flow_statements -> . statement_list
+    (41) control_flow_statements -> . LEAVE
+    (42) control_flow_statements -> . PROCEED
+    (43) control_flow_statements -> . DONATE expression
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for LEAVE resolved as shift
+  ! shift/reduce conflict for PROCEED resolved as shift
+  ! shift/reduce conflict for DONATE resolved as shift
+    LEAVE           shift and go to state 89
+    PROCEED         shift and go to state 90
+    DONATE          shift and go to state 91
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    RCURL           reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! LEAVE           [ reduce using rule 81 (empty -> .) ]
+  ! PROCEED         [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+
+    control_flow_statements_list   shift and go to state 86
+    control_flow_statements        shift and go to state 87
+    statement_list                 shift and go to state 88
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 50
+
+    (33) builtin_call -> BIRO DOT function_call .
+
+    BIRO            reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    SMALLBIRO       reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    ID              reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    LITERAL_A       reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    LITERAL_Q       reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    LITERAL_S       reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    $end            reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    RCURL           reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    LEAVE           reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    PROCEED         reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    DONATE          reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    QUESMARK        reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    PLUS            reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    MINUS           reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    ASTERISK        reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    DIVIDE          reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    EQUALS          reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    MORE            reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    LESS            reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    AND             reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    OR              reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    COMMA           reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    RPAREN          reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+    RSQUARE         reduce using rule 33 (builtin_call -> BIRO DOT function_call .)
+
+
+state 51
+
+    (32) function_call -> ID . LPAREN expression_list RPAREN
+
+    LPAREN          shift and go to state 31
+
+
+state 52
+
+    (19) variable_assignment -> ID ASSIGN assigned_expression .
+
+    BIRO            reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    SMALLBIRO       reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    ID              reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    LITERAL_A       reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    LITERAL_Q       reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    LITERAL_S       reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    $end            reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    RCURL           reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    LEAVE           reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    PROCEED         reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+    DONATE          reduce using rule 19 (variable_assignment -> ID ASSIGN assigned_expression .)
+
+
+state 53
+
+    (20) assigned_expression -> expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    BIRO            reduce using rule 20 (assigned_expression -> expression .)
+    SMALLBIRO       reduce using rule 20 (assigned_expression -> expression .)
+    ID              reduce using rule 20 (assigned_expression -> expression .)
+    LITERAL_A       reduce using rule 20 (assigned_expression -> expression .)
+    LITERAL_Q       reduce using rule 20 (assigned_expression -> expression .)
+    LITERAL_S       reduce using rule 20 (assigned_expression -> expression .)
+    $end            reduce using rule 20 (assigned_expression -> expression .)
+    RCURL           reduce using rule 20 (assigned_expression -> expression .)
+    LEAVE           reduce using rule 20 (assigned_expression -> expression .)
+    PROCEED         reduce using rule 20 (assigned_expression -> expression .)
+    DONATE          reduce using rule 20 (assigned_expression -> expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    EQUALS          shift and go to state 79
+    MORE            shift and go to state 80
+    LESS            shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+
+state 54
+
+    (21) assigned_expression -> array_declaration .
+
+    BIRO            reduce using rule 21 (assigned_expression -> array_declaration .)
+    SMALLBIRO       reduce using rule 21 (assigned_expression -> array_declaration .)
+    ID              reduce using rule 21 (assigned_expression -> array_declaration .)
+    LITERAL_A       reduce using rule 21 (assigned_expression -> array_declaration .)
+    LITERAL_Q       reduce using rule 21 (assigned_expression -> array_declaration .)
+    LITERAL_S       reduce using rule 21 (assigned_expression -> array_declaration .)
+    $end            reduce using rule 21 (assigned_expression -> array_declaration .)
+    RCURL           reduce using rule 21 (assigned_expression -> array_declaration .)
+    LEAVE           reduce using rule 21 (assigned_expression -> array_declaration .)
+    PROCEED         reduce using rule 21 (assigned_expression -> array_declaration .)
+    DONATE          reduce using rule 21 (assigned_expression -> array_declaration .)
+
+
+state 55
+
+    (22) assigned_expression -> queue_declaration .
+
+    BIRO            reduce using rule 22 (assigned_expression -> queue_declaration .)
+    SMALLBIRO       reduce using rule 22 (assigned_expression -> queue_declaration .)
+    ID              reduce using rule 22 (assigned_expression -> queue_declaration .)
+    LITERAL_A       reduce using rule 22 (assigned_expression -> queue_declaration .)
+    LITERAL_Q       reduce using rule 22 (assigned_expression -> queue_declaration .)
+    LITERAL_S       reduce using rule 22 (assigned_expression -> queue_declaration .)
+    $end            reduce using rule 22 (assigned_expression -> queue_declaration .)
+    RCURL           reduce using rule 22 (assigned_expression -> queue_declaration .)
+    LEAVE           reduce using rule 22 (assigned_expression -> queue_declaration .)
+    PROCEED         reduce using rule 22 (assigned_expression -> queue_declaration .)
+    DONATE          reduce using rule 22 (assigned_expression -> queue_declaration .)
+
+
+state 56
+
+    (23) assigned_expression -> stack_declaration .
+
+    BIRO            reduce using rule 23 (assigned_expression -> stack_declaration .)
+    SMALLBIRO       reduce using rule 23 (assigned_expression -> stack_declaration .)
+    ID              reduce using rule 23 (assigned_expression -> stack_declaration .)
+    LITERAL_A       reduce using rule 23 (assigned_expression -> stack_declaration .)
+    LITERAL_Q       reduce using rule 23 (assigned_expression -> stack_declaration .)
+    LITERAL_S       reduce using rule 23 (assigned_expression -> stack_declaration .)
+    $end            reduce using rule 23 (assigned_expression -> stack_declaration .)
+    RCURL           reduce using rule 23 (assigned_expression -> stack_declaration .)
+    LEAVE           reduce using rule 23 (assigned_expression -> stack_declaration .)
+    PROCEED         reduce using rule 23 (assigned_expression -> stack_declaration .)
+    DONATE          reduce using rule 23 (assigned_expression -> stack_declaration .)
+
+
+state 57
+
+    (32) function_call -> ID LPAREN expression_list . RPAREN
+
+    RPAREN          shift and go to state 92
+
+
+state 58
+
+    (60) expression_list -> expression . COMMA expression_list
+    (61) expression_list -> expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    COMMA           shift and go to state 93
+    RPAREN          reduce using rule 61 (expression_list -> expression .)
+    RSQUARE         reduce using rule 61 (expression_list -> expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    EQUALS          shift and go to state 79
+    MORE            shift and go to state 80
+    LESS            shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+
+state 59
+
+    (62) expression_list -> empty .
+
+    RPAREN          reduce using rule 62 (expression_list -> empty .)
+    RSQUARE         reduce using rule 62 (expression_list -> empty .)
+
+
+state 60
+
+    (18) variable_declaration -> SMALLBIRO ID COLON . type ASSIGN assigned_expression
+    (69) type -> . NUM
+    (70) type -> . STR
+    (71) type -> . BOOL
+    (72) type -> . LITERAL_A LSQUARE NUM RSQUARE
+    (73) type -> . LITERAL_A LSQUARE STR RSQUARE
+    (74) type -> . LITERAL_A LSQUARE BOOL RSQUARE
+    (75) type -> . LITERAL_Q LSQUARE NUM RSQUARE
+    (76) type -> . LITERAL_Q LSQUARE STR RSQUARE
+    (77) type -> . LITERAL_Q LSQUARE BOOL RSQUARE
+    (78) type -> . LITERAL_S LSQUARE NUM RSQUARE
+    (79) type -> . LITERAL_S LSQUARE STR RSQUARE
+    (80) type -> . LITERAL_S LSQUARE BOOL RSQUARE
+
+    NUM             shift and go to state 65
+    STR             shift and go to state 66
+    BOOL            shift and go to state 67
+    LITERAL_A       shift and go to state 68
+    LITERAL_Q       shift and go to state 69
+    LITERAL_S       shift and go to state 70
+
+    type                           shift and go to state 94
+
+state 61
+
+    (24) array_declaration -> LITERAL_A LSQUARE expression_list . RSQUARE
+
+    RSQUARE         shift and go to state 95
+
+
+state 62
+
+    (25) queue_declaration -> LITERAL_Q LSQUARE expression_list . RSQUARE
+
+    RSQUARE         shift and go to state 96
+
+
+state 63
+
+    (26) stack_declaration -> LITERAL_S LSQUARE expression_list . RSQUARE
+
+    RSQUARE         shift and go to state 97
+
+
+state 64
+
+    (17) variable_declaration -> BIRO ID COLON type . ASSIGN assigned_expression
+
+    ASSIGN          shift and go to state 98
+
+
+state 65
+
+    (69) type -> NUM .
+
+    ASSIGN          reduce using rule 69 (type -> NUM .)
+    COMMA           reduce using rule 69 (type -> NUM .)
+    RPAREN          reduce using rule 69 (type -> NUM .)
+
+
+state 66
+
+    (70) type -> STR .
+
+    ASSIGN          reduce using rule 70 (type -> STR .)
+    COMMA           reduce using rule 70 (type -> STR .)
+    RPAREN          reduce using rule 70 (type -> STR .)
+
+
+state 67
+
+    (71) type -> BOOL .
+
+    ASSIGN          reduce using rule 71 (type -> BOOL .)
+    COMMA           reduce using rule 71 (type -> BOOL .)
+    RPAREN          reduce using rule 71 (type -> BOOL .)
+
+
+state 68
+
+    (72) type -> LITERAL_A . LSQUARE NUM RSQUARE
+    (73) type -> LITERAL_A . LSQUARE STR RSQUARE
+    (74) type -> LITERAL_A . LSQUARE BOOL RSQUARE
+
+    LSQUARE         shift and go to state 99
+
+
+state 69
+
+    (75) type -> LITERAL_Q . LSQUARE NUM RSQUARE
+    (76) type -> LITERAL_Q . LSQUARE STR RSQUARE
+    (77) type -> LITERAL_Q . LSQUARE BOOL RSQUARE
+
+    LSQUARE         shift and go to state 100
+
+
+state 70
+
+    (78) type -> LITERAL_S . LSQUARE NUM RSQUARE
+    (79) type -> LITERAL_S . LSQUARE STR RSQUARE
+    (80) type -> LITERAL_S . LSQUARE BOOL RSQUARE
+
+    LSQUARE         shift and go to state 101
+
+
+state 71
+
+    (63) arg_list -> ID . COMMA arg_list
+    (64) arg_list -> ID .
+
+    COMMA           shift and go to state 102
+    RPAREN          reduce using rule 64 (arg_list -> ID .)
+
+
+state 72
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list . RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+
+    RPAREN          shift and go to state 103
+
+
+state 73
+
+    (65) arg_list -> empty .
+
+    RPAREN          reduce using rule 65 (arg_list -> empty .)
+
+
+state 74
+
+    (27) conditional_statement -> BIRO IS expression QUESMARK . LCURL control_flow_statements_list RCURL
+
+    LCURL           shift and go to state 104
+
+
+state 75
+
+    (51) expression -> expression PLUS . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 105
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 76
+
+    (52) expression -> expression MINUS . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 106
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 77
+
+    (53) expression -> expression ASTERISK . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 107
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 78
+
+    (54) expression -> expression DIVIDE . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 108
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 79
+
+    (55) expression -> expression EQUALS . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 109
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 80
+
+    (56) expression -> expression MORE . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 110
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 81
+
+    (57) expression -> expression LESS . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 111
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 82
+
+    (58) expression -> expression AND . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 112
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 83
+
+    (59) expression -> expression OR . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 113
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 84
+
+    (28) try_block -> BIRO ATTEMPT LCURL statement_list . RCURL
+
+    RCURL           shift and go to state 114
+
+
+state 85
+
+    (29) catch_block -> BIRO ARREST LCURL statement_list . RCURL
+
+    RCURL           shift and go to state 115
+
+
+state 86
+
+    (30) loop_statement -> BIRO LOOP LCURL control_flow_statements_list . RCURL
+
+    RCURL           shift and go to state 116
+
+
+state 87
+
+    (38) control_flow_statements_list -> control_flow_statements . control_flow_statements_list
+    (39) control_flow_statements_list -> control_flow_statements .
+    (38) control_flow_statements_list -> . control_flow_statements control_flow_statements_list
+    (39) control_flow_statements_list -> . control_flow_statements
+    (40) control_flow_statements -> . statement_list
+    (41) control_flow_statements -> . LEAVE
+    (42) control_flow_statements -> . PROCEED
+    (43) control_flow_statements -> . DONATE expression
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for LEAVE resolved as shift
+  ! shift/reduce conflict for PROCEED resolved as shift
+  ! shift/reduce conflict for DONATE resolved as shift
+  ! reduce/reduce conflict for RCURL resolved using rule 39 (control_flow_statements_list -> control_flow_statements .)
+    RCURL           reduce using rule 39 (control_flow_statements_list -> control_flow_statements .)
+    LEAVE           shift and go to state 89
+    PROCEED         shift and go to state 90
+    DONATE          shift and go to state 91
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! LEAVE           [ reduce using rule 81 (empty -> .) ]
+  ! PROCEED         [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+  ! RCURL           [ reduce using rule 81 (empty -> .) ]
+
+    control_flow_statements        shift and go to state 87
+    control_flow_statements_list   shift and go to state 117
+    statement_list                 shift and go to state 88
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 88
+
+    (40) control_flow_statements -> statement_list .
+
+    LEAVE           reduce using rule 40 (control_flow_statements -> statement_list .)
+    PROCEED         reduce using rule 40 (control_flow_statements -> statement_list .)
+    DONATE          reduce using rule 40 (control_flow_statements -> statement_list .)
+    BIRO            reduce using rule 40 (control_flow_statements -> statement_list .)
+    SMALLBIRO       reduce using rule 40 (control_flow_statements -> statement_list .)
+    ID              reduce using rule 40 (control_flow_statements -> statement_list .)
+    LITERAL_A       reduce using rule 40 (control_flow_statements -> statement_list .)
+    LITERAL_Q       reduce using rule 40 (control_flow_statements -> statement_list .)
+    LITERAL_S       reduce using rule 40 (control_flow_statements -> statement_list .)
+    RCURL           reduce using rule 40 (control_flow_statements -> statement_list .)
+
+
+state 89
+
+    (41) control_flow_statements -> LEAVE .
+
+    LEAVE           reduce using rule 41 (control_flow_statements -> LEAVE .)
+    PROCEED         reduce using rule 41 (control_flow_statements -> LEAVE .)
+    DONATE          reduce using rule 41 (control_flow_statements -> LEAVE .)
+    BIRO            reduce using rule 41 (control_flow_statements -> LEAVE .)
+    SMALLBIRO       reduce using rule 41 (control_flow_statements -> LEAVE .)
+    ID              reduce using rule 41 (control_flow_statements -> LEAVE .)
+    LITERAL_A       reduce using rule 41 (control_flow_statements -> LEAVE .)
+    LITERAL_Q       reduce using rule 41 (control_flow_statements -> LEAVE .)
+    LITERAL_S       reduce using rule 41 (control_flow_statements -> LEAVE .)
+    RCURL           reduce using rule 41 (control_flow_statements -> LEAVE .)
+
+
+state 90
+
+    (42) control_flow_statements -> PROCEED .
+
+    LEAVE           reduce using rule 42 (control_flow_statements -> PROCEED .)
+    PROCEED         reduce using rule 42 (control_flow_statements -> PROCEED .)
+    DONATE          reduce using rule 42 (control_flow_statements -> PROCEED .)
+    BIRO            reduce using rule 42 (control_flow_statements -> PROCEED .)
+    SMALLBIRO       reduce using rule 42 (control_flow_statements -> PROCEED .)
+    ID              reduce using rule 42 (control_flow_statements -> PROCEED .)
+    LITERAL_A       reduce using rule 42 (control_flow_statements -> PROCEED .)
+    LITERAL_Q       reduce using rule 42 (control_flow_statements -> PROCEED .)
+    LITERAL_S       reduce using rule 42 (control_flow_statements -> PROCEED .)
+    RCURL           reduce using rule 42 (control_flow_statements -> PROCEED .)
+
+
+state 91
+
+    (43) control_flow_statements -> DONATE . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 118
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 92
+
+    (32) function_call -> ID LPAREN expression_list RPAREN .
+
+    BIRO            reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    SMALLBIRO       reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    ID              reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    LITERAL_A       reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    LITERAL_Q       reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    LITERAL_S       reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    $end            reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    RCURL           reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    LEAVE           reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    PROCEED         reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    DONATE          reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    QUESMARK        reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    PLUS            reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    MINUS           reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    ASTERISK        reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    DIVIDE          reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    EQUALS          reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    MORE            reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    LESS            reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    AND             reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    OR              reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    COMMA           reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    RPAREN          reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+    RSQUARE         reduce using rule 32 (function_call -> ID LPAREN expression_list RPAREN .)
+
+
+state 93
+
+    (60) expression_list -> expression COMMA . expression_list
+    (60) expression_list -> . expression COMMA expression_list
+    (61) expression_list -> . expression
+    (62) expression_list -> . empty
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (81) empty -> .
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    RPAREN          reduce using rule 81 (empty -> .)
+    RSQUARE         reduce using rule 81 (empty -> .)
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 58
+    expression_list                shift and go to state 119
+    empty                          shift and go to state 59
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 94
+
+    (18) variable_declaration -> SMALLBIRO ID COLON type . ASSIGN assigned_expression
+
+    ASSIGN          shift and go to state 120
+
+
+state 95
+
+    (24) array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .
+
+    BIRO            reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    SMALLBIRO       reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    ID              reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    LITERAL_A       reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    LITERAL_Q       reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    LITERAL_S       reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    $end            reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    RCURL           reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    LEAVE           reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    PROCEED         reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+    DONATE          reduce using rule 24 (array_declaration -> LITERAL_A LSQUARE expression_list RSQUARE .)
+
+
+state 96
+
+    (25) queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .
+
+    BIRO            reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    SMALLBIRO       reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    ID              reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    LITERAL_A       reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    LITERAL_Q       reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    LITERAL_S       reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    $end            reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    RCURL           reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    LEAVE           reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    PROCEED         reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+    DONATE          reduce using rule 25 (queue_declaration -> LITERAL_Q LSQUARE expression_list RSQUARE .)
+
+
+state 97
+
+    (26) stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .
+
+    BIRO            reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    SMALLBIRO       reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    ID              reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    LITERAL_A       reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    LITERAL_Q       reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    LITERAL_S       reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    $end            reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    RCURL           reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    LEAVE           reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    PROCEED         reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+    DONATE          reduce using rule 26 (stack_declaration -> LITERAL_S LSQUARE expression_list RSQUARE .)
+
+
+state 98
+
+    (17) variable_declaration -> BIRO ID COLON type ASSIGN . assigned_expression
+    (20) assigned_expression -> . expression
+    (21) assigned_expression -> . array_declaration
+    (22) assigned_expression -> . queue_declaration
+    (23) assigned_expression -> . stack_declaration
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    BIRO            shift and go to state 38
+
+    assigned_expression            shift and go to state 121
+    expression                     shift and go to state 53
+    array_declaration              shift and go to state 54
+    queue_declaration              shift and go to state 55
+    stack_declaration              shift and go to state 56
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 99
+
+    (72) type -> LITERAL_A LSQUARE . NUM RSQUARE
+    (73) type -> LITERAL_A LSQUARE . STR RSQUARE
+    (74) type -> LITERAL_A LSQUARE . BOOL RSQUARE
+
+    NUM             shift and go to state 122
+    STR             shift and go to state 123
+    BOOL            shift and go to state 124
+
+
+state 100
+
+    (75) type -> LITERAL_Q LSQUARE . NUM RSQUARE
+    (76) type -> LITERAL_Q LSQUARE . STR RSQUARE
+    (77) type -> LITERAL_Q LSQUARE . BOOL RSQUARE
+
+    NUM             shift and go to state 125
+    STR             shift and go to state 126
+    BOOL            shift and go to state 127
+
+
+state 101
+
+    (78) type -> LITERAL_S LSQUARE . NUM RSQUARE
+    (79) type -> LITERAL_S LSQUARE . STR RSQUARE
+    (80) type -> LITERAL_S LSQUARE . BOOL RSQUARE
+
+    NUM             shift and go to state 128
+    STR             shift and go to state 129
+    BOOL            shift and go to state 130
+
+
+state 102
+
+    (63) arg_list -> ID COMMA . arg_list
+    (63) arg_list -> . ID COMMA arg_list
+    (64) arg_list -> . ID
+    (65) arg_list -> . empty
+    (81) empty -> .
+
+    ID              shift and go to state 71
+    RPAREN          reduce using rule 81 (empty -> .)
+
+    arg_list                       shift and go to state 131
+    empty                          shift and go to state 73
+
+state 103
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN . COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+
+    COLON           shift and go to state 132
+
+
+state 104
+
+    (27) conditional_statement -> BIRO IS expression QUESMARK LCURL . control_flow_statements_list RCURL
+    (38) control_flow_statements_list -> . control_flow_statements control_flow_statements_list
+    (39) control_flow_statements_list -> . control_flow_statements
+    (40) control_flow_statements -> . statement_list
+    (41) control_flow_statements -> . LEAVE
+    (42) control_flow_statements -> . PROCEED
+    (43) control_flow_statements -> . DONATE expression
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for LEAVE resolved as shift
+  ! shift/reduce conflict for PROCEED resolved as shift
+  ! shift/reduce conflict for DONATE resolved as shift
+    LEAVE           shift and go to state 89
+    PROCEED         shift and go to state 90
+    DONATE          shift and go to state 91
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    RCURL           reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! LEAVE           [ reduce using rule 81 (empty -> .) ]
+  ! PROCEED         [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+
+    control_flow_statements_list   shift and go to state 133
+    control_flow_statements        shift and go to state 87
+    statement_list                 shift and go to state 88
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 105
+
+    (51) expression -> expression PLUS expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 51 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 51 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 51 (expression -> expression PLUS expression .)
+    EQUALS          reduce using rule 51 (expression -> expression PLUS expression .)
+    MORE            reduce using rule 51 (expression -> expression PLUS expression .)
+    LESS            reduce using rule 51 (expression -> expression PLUS expression .)
+    BIRO            reduce using rule 51 (expression -> expression PLUS expression .)
+    SMALLBIRO       reduce using rule 51 (expression -> expression PLUS expression .)
+    ID              reduce using rule 51 (expression -> expression PLUS expression .)
+    LITERAL_A       reduce using rule 51 (expression -> expression PLUS expression .)
+    LITERAL_Q       reduce using rule 51 (expression -> expression PLUS expression .)
+    LITERAL_S       reduce using rule 51 (expression -> expression PLUS expression .)
+    $end            reduce using rule 51 (expression -> expression PLUS expression .)
+    RCURL           reduce using rule 51 (expression -> expression PLUS expression .)
+    LEAVE           reduce using rule 51 (expression -> expression PLUS expression .)
+    PROCEED         reduce using rule 51 (expression -> expression PLUS expression .)
+    DONATE          reduce using rule 51 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 51 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 51 (expression -> expression PLUS expression .)
+    RSQUARE         reduce using rule 51 (expression -> expression PLUS expression .)
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! ASTERISK        [ reduce using rule 51 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 51 (expression -> expression PLUS expression .) ]
+  ! AND             [ reduce using rule 51 (expression -> expression PLUS expression .) ]
+  ! OR              [ reduce using rule 51 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 106
+
+    (52) expression -> expression MINUS expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 52 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 52 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 52 (expression -> expression MINUS expression .)
+    EQUALS          reduce using rule 52 (expression -> expression MINUS expression .)
+    MORE            reduce using rule 52 (expression -> expression MINUS expression .)
+    LESS            reduce using rule 52 (expression -> expression MINUS expression .)
+    BIRO            reduce using rule 52 (expression -> expression MINUS expression .)
+    SMALLBIRO       reduce using rule 52 (expression -> expression MINUS expression .)
+    ID              reduce using rule 52 (expression -> expression MINUS expression .)
+    LITERAL_A       reduce using rule 52 (expression -> expression MINUS expression .)
+    LITERAL_Q       reduce using rule 52 (expression -> expression MINUS expression .)
+    LITERAL_S       reduce using rule 52 (expression -> expression MINUS expression .)
+    $end            reduce using rule 52 (expression -> expression MINUS expression .)
+    RCURL           reduce using rule 52 (expression -> expression MINUS expression .)
+    LEAVE           reduce using rule 52 (expression -> expression MINUS expression .)
+    PROCEED         reduce using rule 52 (expression -> expression MINUS expression .)
+    DONATE          reduce using rule 52 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 52 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 52 (expression -> expression MINUS expression .)
+    RSQUARE         reduce using rule 52 (expression -> expression MINUS expression .)
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! ASTERISK        [ reduce using rule 52 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 52 (expression -> expression MINUS expression .) ]
+  ! AND             [ reduce using rule 52 (expression -> expression MINUS expression .) ]
+  ! OR              [ reduce using rule 52 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 107
+
+    (53) expression -> expression ASTERISK expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 53 (expression -> expression ASTERISK expression .)
+    PLUS            reduce using rule 53 (expression -> expression ASTERISK expression .)
+    MINUS           reduce using rule 53 (expression -> expression ASTERISK expression .)
+    ASTERISK        reduce using rule 53 (expression -> expression ASTERISK expression .)
+    DIVIDE          reduce using rule 53 (expression -> expression ASTERISK expression .)
+    EQUALS          reduce using rule 53 (expression -> expression ASTERISK expression .)
+    MORE            reduce using rule 53 (expression -> expression ASTERISK expression .)
+    LESS            reduce using rule 53 (expression -> expression ASTERISK expression .)
+    BIRO            reduce using rule 53 (expression -> expression ASTERISK expression .)
+    SMALLBIRO       reduce using rule 53 (expression -> expression ASTERISK expression .)
+    ID              reduce using rule 53 (expression -> expression ASTERISK expression .)
+    LITERAL_A       reduce using rule 53 (expression -> expression ASTERISK expression .)
+    LITERAL_Q       reduce using rule 53 (expression -> expression ASTERISK expression .)
+    LITERAL_S       reduce using rule 53 (expression -> expression ASTERISK expression .)
+    $end            reduce using rule 53 (expression -> expression ASTERISK expression .)
+    RCURL           reduce using rule 53 (expression -> expression ASTERISK expression .)
+    LEAVE           reduce using rule 53 (expression -> expression ASTERISK expression .)
+    PROCEED         reduce using rule 53 (expression -> expression ASTERISK expression .)
+    DONATE          reduce using rule 53 (expression -> expression ASTERISK expression .)
+    COMMA           reduce using rule 53 (expression -> expression ASTERISK expression .)
+    RPAREN          reduce using rule 53 (expression -> expression ASTERISK expression .)
+    RSQUARE         reduce using rule 53 (expression -> expression ASTERISK expression .)
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! AND             [ reduce using rule 53 (expression -> expression ASTERISK expression .) ]
+  ! OR              [ reduce using rule 53 (expression -> expression ASTERISK expression .) ]
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! ASTERISK        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 108
+
+    (54) expression -> expression DIVIDE expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 54 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 54 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 54 (expression -> expression DIVIDE expression .)
+    ASTERISK        reduce using rule 54 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 54 (expression -> expression DIVIDE expression .)
+    EQUALS          reduce using rule 54 (expression -> expression DIVIDE expression .)
+    MORE            reduce using rule 54 (expression -> expression DIVIDE expression .)
+    LESS            reduce using rule 54 (expression -> expression DIVIDE expression .)
+    BIRO            reduce using rule 54 (expression -> expression DIVIDE expression .)
+    SMALLBIRO       reduce using rule 54 (expression -> expression DIVIDE expression .)
+    ID              reduce using rule 54 (expression -> expression DIVIDE expression .)
+    LITERAL_A       reduce using rule 54 (expression -> expression DIVIDE expression .)
+    LITERAL_Q       reduce using rule 54 (expression -> expression DIVIDE expression .)
+    LITERAL_S       reduce using rule 54 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 54 (expression -> expression DIVIDE expression .)
+    RCURL           reduce using rule 54 (expression -> expression DIVIDE expression .)
+    LEAVE           reduce using rule 54 (expression -> expression DIVIDE expression .)
+    PROCEED         reduce using rule 54 (expression -> expression DIVIDE expression .)
+    DONATE          reduce using rule 54 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 54 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 54 (expression -> expression DIVIDE expression .)
+    RSQUARE         reduce using rule 54 (expression -> expression DIVIDE expression .)
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! AND             [ reduce using rule 54 (expression -> expression DIVIDE expression .) ]
+  ! OR              [ reduce using rule 54 (expression -> expression DIVIDE expression .) ]
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! ASTERISK        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 109
+
+    (55) expression -> expression EQUALS expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 55 (expression -> expression EQUALS expression .)
+    EQUALS          reduce using rule 55 (expression -> expression EQUALS expression .)
+    MORE            reduce using rule 55 (expression -> expression EQUALS expression .)
+    LESS            reduce using rule 55 (expression -> expression EQUALS expression .)
+    BIRO            reduce using rule 55 (expression -> expression EQUALS expression .)
+    SMALLBIRO       reduce using rule 55 (expression -> expression EQUALS expression .)
+    ID              reduce using rule 55 (expression -> expression EQUALS expression .)
+    LITERAL_A       reduce using rule 55 (expression -> expression EQUALS expression .)
+    LITERAL_Q       reduce using rule 55 (expression -> expression EQUALS expression .)
+    LITERAL_S       reduce using rule 55 (expression -> expression EQUALS expression .)
+    $end            reduce using rule 55 (expression -> expression EQUALS expression .)
+    RCURL           reduce using rule 55 (expression -> expression EQUALS expression .)
+    LEAVE           reduce using rule 55 (expression -> expression EQUALS expression .)
+    PROCEED         reduce using rule 55 (expression -> expression EQUALS expression .)
+    DONATE          reduce using rule 55 (expression -> expression EQUALS expression .)
+    COMMA           reduce using rule 55 (expression -> expression EQUALS expression .)
+    RPAREN          reduce using rule 55 (expression -> expression EQUALS expression .)
+    RSQUARE         reduce using rule 55 (expression -> expression EQUALS expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! PLUS            [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! MINUS           [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! ASTERISK        [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! DIVIDE          [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! AND             [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! OR              [ reduce using rule 55 (expression -> expression EQUALS expression .) ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 110
+
+    (56) expression -> expression MORE expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 56 (expression -> expression MORE expression .)
+    EQUALS          reduce using rule 56 (expression -> expression MORE expression .)
+    MORE            reduce using rule 56 (expression -> expression MORE expression .)
+    LESS            reduce using rule 56 (expression -> expression MORE expression .)
+    BIRO            reduce using rule 56 (expression -> expression MORE expression .)
+    SMALLBIRO       reduce using rule 56 (expression -> expression MORE expression .)
+    ID              reduce using rule 56 (expression -> expression MORE expression .)
+    LITERAL_A       reduce using rule 56 (expression -> expression MORE expression .)
+    LITERAL_Q       reduce using rule 56 (expression -> expression MORE expression .)
+    LITERAL_S       reduce using rule 56 (expression -> expression MORE expression .)
+    $end            reduce using rule 56 (expression -> expression MORE expression .)
+    RCURL           reduce using rule 56 (expression -> expression MORE expression .)
+    LEAVE           reduce using rule 56 (expression -> expression MORE expression .)
+    PROCEED         reduce using rule 56 (expression -> expression MORE expression .)
+    DONATE          reduce using rule 56 (expression -> expression MORE expression .)
+    COMMA           reduce using rule 56 (expression -> expression MORE expression .)
+    RPAREN          reduce using rule 56 (expression -> expression MORE expression .)
+    RSQUARE         reduce using rule 56 (expression -> expression MORE expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! PLUS            [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! MINUS           [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! ASTERISK        [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! DIVIDE          [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! AND             [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! OR              [ reduce using rule 56 (expression -> expression MORE expression .) ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 111
+
+    (57) expression -> expression LESS expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 57 (expression -> expression LESS expression .)
+    EQUALS          reduce using rule 57 (expression -> expression LESS expression .)
+    MORE            reduce using rule 57 (expression -> expression LESS expression .)
+    LESS            reduce using rule 57 (expression -> expression LESS expression .)
+    BIRO            reduce using rule 57 (expression -> expression LESS expression .)
+    SMALLBIRO       reduce using rule 57 (expression -> expression LESS expression .)
+    ID              reduce using rule 57 (expression -> expression LESS expression .)
+    LITERAL_A       reduce using rule 57 (expression -> expression LESS expression .)
+    LITERAL_Q       reduce using rule 57 (expression -> expression LESS expression .)
+    LITERAL_S       reduce using rule 57 (expression -> expression LESS expression .)
+    $end            reduce using rule 57 (expression -> expression LESS expression .)
+    RCURL           reduce using rule 57 (expression -> expression LESS expression .)
+    LEAVE           reduce using rule 57 (expression -> expression LESS expression .)
+    PROCEED         reduce using rule 57 (expression -> expression LESS expression .)
+    DONATE          reduce using rule 57 (expression -> expression LESS expression .)
+    COMMA           reduce using rule 57 (expression -> expression LESS expression .)
+    RPAREN          reduce using rule 57 (expression -> expression LESS expression .)
+    RSQUARE         reduce using rule 57 (expression -> expression LESS expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+  ! PLUS            [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! MINUS           [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! ASTERISK        [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! DIVIDE          [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! AND             [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! OR              [ reduce using rule 57 (expression -> expression LESS expression .) ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+
+
+state 112
+
+    (58) expression -> expression AND expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 58 (expression -> expression AND expression .)
+    PLUS            reduce using rule 58 (expression -> expression AND expression .)
+    MINUS           reduce using rule 58 (expression -> expression AND expression .)
+    ASTERISK        reduce using rule 58 (expression -> expression AND expression .)
+    DIVIDE          reduce using rule 58 (expression -> expression AND expression .)
+    EQUALS          reduce using rule 58 (expression -> expression AND expression .)
+    MORE            reduce using rule 58 (expression -> expression AND expression .)
+    LESS            reduce using rule 58 (expression -> expression AND expression .)
+    AND             reduce using rule 58 (expression -> expression AND expression .)
+    OR              reduce using rule 58 (expression -> expression AND expression .)
+    BIRO            reduce using rule 58 (expression -> expression AND expression .)
+    SMALLBIRO       reduce using rule 58 (expression -> expression AND expression .)
+    ID              reduce using rule 58 (expression -> expression AND expression .)
+    LITERAL_A       reduce using rule 58 (expression -> expression AND expression .)
+    LITERAL_Q       reduce using rule 58 (expression -> expression AND expression .)
+    LITERAL_S       reduce using rule 58 (expression -> expression AND expression .)
+    $end            reduce using rule 58 (expression -> expression AND expression .)
+    RCURL           reduce using rule 58 (expression -> expression AND expression .)
+    LEAVE           reduce using rule 58 (expression -> expression AND expression .)
+    PROCEED         reduce using rule 58 (expression -> expression AND expression .)
+    DONATE          reduce using rule 58 (expression -> expression AND expression .)
+    COMMA           reduce using rule 58 (expression -> expression AND expression .)
+    RPAREN          reduce using rule 58 (expression -> expression AND expression .)
+    RSQUARE         reduce using rule 58 (expression -> expression AND expression .)
+
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! ASTERISK        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+  ! AND             [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+
+
+state 113
+
+    (59) expression -> expression OR expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    QUESMARK        reduce using rule 59 (expression -> expression OR expression .)
+    PLUS            reduce using rule 59 (expression -> expression OR expression .)
+    MINUS           reduce using rule 59 (expression -> expression OR expression .)
+    ASTERISK        reduce using rule 59 (expression -> expression OR expression .)
+    DIVIDE          reduce using rule 59 (expression -> expression OR expression .)
+    EQUALS          reduce using rule 59 (expression -> expression OR expression .)
+    MORE            reduce using rule 59 (expression -> expression OR expression .)
+    LESS            reduce using rule 59 (expression -> expression OR expression .)
+    AND             reduce using rule 59 (expression -> expression OR expression .)
+    OR              reduce using rule 59 (expression -> expression OR expression .)
+    BIRO            reduce using rule 59 (expression -> expression OR expression .)
+    SMALLBIRO       reduce using rule 59 (expression -> expression OR expression .)
+    ID              reduce using rule 59 (expression -> expression OR expression .)
+    LITERAL_A       reduce using rule 59 (expression -> expression OR expression .)
+    LITERAL_Q       reduce using rule 59 (expression -> expression OR expression .)
+    LITERAL_S       reduce using rule 59 (expression -> expression OR expression .)
+    $end            reduce using rule 59 (expression -> expression OR expression .)
+    RCURL           reduce using rule 59 (expression -> expression OR expression .)
+    LEAVE           reduce using rule 59 (expression -> expression OR expression .)
+    PROCEED         reduce using rule 59 (expression -> expression OR expression .)
+    DONATE          reduce using rule 59 (expression -> expression OR expression .)
+    COMMA           reduce using rule 59 (expression -> expression OR expression .)
+    RPAREN          reduce using rule 59 (expression -> expression OR expression .)
+    RSQUARE         reduce using rule 59 (expression -> expression OR expression .)
+
+  ! PLUS            [ shift and go to state 75 ]
+  ! MINUS           [ shift and go to state 76 ]
+  ! ASTERISK        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! EQUALS          [ shift and go to state 79 ]
+  ! MORE            [ shift and go to state 80 ]
+  ! LESS            [ shift and go to state 81 ]
+  ! AND             [ shift and go to state 82 ]
+  ! OR              [ shift and go to state 83 ]
+
+
+state 114
+
+    (28) try_block -> BIRO ATTEMPT LCURL statement_list RCURL .
+
+    BIRO            reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    SMALLBIRO       reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    ID              reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    LITERAL_A       reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    LITERAL_Q       reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    LITERAL_S       reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    $end            reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    RCURL           reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    LEAVE           reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    PROCEED         reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+    DONATE          reduce using rule 28 (try_block -> BIRO ATTEMPT LCURL statement_list RCURL .)
+
+
+state 115
+
+    (29) catch_block -> BIRO ARREST LCURL statement_list RCURL .
+
+    BIRO            reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    SMALLBIRO       reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    ID              reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    LITERAL_A       reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    LITERAL_Q       reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    LITERAL_S       reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    $end            reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    RCURL           reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    LEAVE           reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    PROCEED         reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+    DONATE          reduce using rule 29 (catch_block -> BIRO ARREST LCURL statement_list RCURL .)
+
+
+state 116
+
+    (30) loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .
+
+    BIRO            reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    SMALLBIRO       reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    ID              reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    LITERAL_A       reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    LITERAL_Q       reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    LITERAL_S       reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    $end            reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    RCURL           reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    LEAVE           reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    PROCEED         reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+    DONATE          reduce using rule 30 (loop_statement -> BIRO LOOP LCURL control_flow_statements_list RCURL .)
+
+
+state 117
+
+    (38) control_flow_statements_list -> control_flow_statements control_flow_statements_list .
+
+    RCURL           reduce using rule 38 (control_flow_statements_list -> control_flow_statements control_flow_statements_list .)
+
+
+state 118
+
+    (43) control_flow_statements -> DONATE expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    LEAVE           reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    PROCEED         reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    DONATE          reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    BIRO            reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    SMALLBIRO       reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    ID              reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    LITERAL_A       reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    LITERAL_Q       reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    LITERAL_S       reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    RCURL           reduce using rule 43 (control_flow_statements -> DONATE expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    EQUALS          shift and go to state 79
+    MORE            shift and go to state 80
+    LESS            shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+
+state 119
+
+    (60) expression_list -> expression COMMA expression_list .
+
+    RPAREN          reduce using rule 60 (expression_list -> expression COMMA expression_list .)
+    RSQUARE         reduce using rule 60 (expression_list -> expression COMMA expression_list .)
+
+
+state 120
+
+    (18) variable_declaration -> SMALLBIRO ID COLON type ASSIGN . assigned_expression
+    (20) assigned_expression -> . expression
+    (21) assigned_expression -> . array_declaration
+    (22) assigned_expression -> . queue_declaration
+    (23) assigned_expression -> . stack_declaration
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    BIRO            shift and go to state 38
+
+    assigned_expression            shift and go to state 134
+    expression                     shift and go to state 53
+    array_declaration              shift and go to state 54
+    queue_declaration              shift and go to state 55
+    stack_declaration              shift and go to state 56
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 121
+
+    (17) variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .
+
+    BIRO            reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    SMALLBIRO       reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    ID              reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_A       reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_Q       reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_S       reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    $end            reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    RCURL           reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    LEAVE           reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    PROCEED         reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+    DONATE          reduce using rule 17 (variable_declaration -> BIRO ID COLON type ASSIGN assigned_expression .)
+
+
+state 122
+
+    (72) type -> LITERAL_A LSQUARE NUM . RSQUARE
+
+    RSQUARE         shift and go to state 135
+
+
+state 123
+
+    (73) type -> LITERAL_A LSQUARE STR . RSQUARE
+
+    RSQUARE         shift and go to state 136
+
+
+state 124
+
+    (74) type -> LITERAL_A LSQUARE BOOL . RSQUARE
+
+    RSQUARE         shift and go to state 137
+
+
+state 125
+
+    (75) type -> LITERAL_Q LSQUARE NUM . RSQUARE
+
+    RSQUARE         shift and go to state 138
+
+
+state 126
+
+    (76) type -> LITERAL_Q LSQUARE STR . RSQUARE
+
+    RSQUARE         shift and go to state 139
+
+
+state 127
+
+    (77) type -> LITERAL_Q LSQUARE BOOL . RSQUARE
+
+    RSQUARE         shift and go to state 140
+
+
+state 128
+
+    (78) type -> LITERAL_S LSQUARE NUM . RSQUARE
+
+    RSQUARE         shift and go to state 141
+
+
+state 129
+
+    (79) type -> LITERAL_S LSQUARE STR . RSQUARE
+
+    RSQUARE         shift and go to state 142
+
+
+state 130
+
+    (80) type -> LITERAL_S LSQUARE BOOL . RSQUARE
+
+    RSQUARE         shift and go to state 143
+
+
+state 131
+
+    (63) arg_list -> ID COMMA arg_list .
+
+    RPAREN          reduce using rule 63 (arg_list -> ID COMMA arg_list .)
+
+
+state 132
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON . LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+
+    LPAREN          shift and go to state 144
+
+
+state 133
+
+    (27) conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list . RCURL
+
+    RCURL           shift and go to state 145
+
+
+state 134
+
+    (18) variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .
+
+    BIRO            reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    SMALLBIRO       reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    ID              reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_A       reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_Q       reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    LITERAL_S       reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    $end            reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    RCURL           reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    LEAVE           reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    PROCEED         reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+    DONATE          reduce using rule 18 (variable_declaration -> SMALLBIRO ID COLON type ASSIGN assigned_expression .)
+
+
+state 135
+
+    (72) type -> LITERAL_A LSQUARE NUM RSQUARE .
+
+    ASSIGN          reduce using rule 72 (type -> LITERAL_A LSQUARE NUM RSQUARE .)
+    COMMA           reduce using rule 72 (type -> LITERAL_A LSQUARE NUM RSQUARE .)
+    RPAREN          reduce using rule 72 (type -> LITERAL_A LSQUARE NUM RSQUARE .)
+
+
+state 136
+
+    (73) type -> LITERAL_A LSQUARE STR RSQUARE .
+
+    ASSIGN          reduce using rule 73 (type -> LITERAL_A LSQUARE STR RSQUARE .)
+    COMMA           reduce using rule 73 (type -> LITERAL_A LSQUARE STR RSQUARE .)
+    RPAREN          reduce using rule 73 (type -> LITERAL_A LSQUARE STR RSQUARE .)
+
+
+state 137
+
+    (74) type -> LITERAL_A LSQUARE BOOL RSQUARE .
+
+    ASSIGN          reduce using rule 74 (type -> LITERAL_A LSQUARE BOOL RSQUARE .)
+    COMMA           reduce using rule 74 (type -> LITERAL_A LSQUARE BOOL RSQUARE .)
+    RPAREN          reduce using rule 74 (type -> LITERAL_A LSQUARE BOOL RSQUARE .)
+
+
+state 138
+
+    (75) type -> LITERAL_Q LSQUARE NUM RSQUARE .
+
+    ASSIGN          reduce using rule 75 (type -> LITERAL_Q LSQUARE NUM RSQUARE .)
+    COMMA           reduce using rule 75 (type -> LITERAL_Q LSQUARE NUM RSQUARE .)
+    RPAREN          reduce using rule 75 (type -> LITERAL_Q LSQUARE NUM RSQUARE .)
+
+
+state 139
+
+    (76) type -> LITERAL_Q LSQUARE STR RSQUARE .
+
+    ASSIGN          reduce using rule 76 (type -> LITERAL_Q LSQUARE STR RSQUARE .)
+    COMMA           reduce using rule 76 (type -> LITERAL_Q LSQUARE STR RSQUARE .)
+    RPAREN          reduce using rule 76 (type -> LITERAL_Q LSQUARE STR RSQUARE .)
+
+
+state 140
+
+    (77) type -> LITERAL_Q LSQUARE BOOL RSQUARE .
+
+    ASSIGN          reduce using rule 77 (type -> LITERAL_Q LSQUARE BOOL RSQUARE .)
+    COMMA           reduce using rule 77 (type -> LITERAL_Q LSQUARE BOOL RSQUARE .)
+    RPAREN          reduce using rule 77 (type -> LITERAL_Q LSQUARE BOOL RSQUARE .)
+
+
+state 141
+
+    (78) type -> LITERAL_S LSQUARE NUM RSQUARE .
+
+    ASSIGN          reduce using rule 78 (type -> LITERAL_S LSQUARE NUM RSQUARE .)
+    COMMA           reduce using rule 78 (type -> LITERAL_S LSQUARE NUM RSQUARE .)
+    RPAREN          reduce using rule 78 (type -> LITERAL_S LSQUARE NUM RSQUARE .)
+
+
+state 142
+
+    (79) type -> LITERAL_S LSQUARE STR RSQUARE .
+
+    ASSIGN          reduce using rule 79 (type -> LITERAL_S LSQUARE STR RSQUARE .)
+    COMMA           reduce using rule 79 (type -> LITERAL_S LSQUARE STR RSQUARE .)
+    RPAREN          reduce using rule 79 (type -> LITERAL_S LSQUARE STR RSQUARE .)
+
+
+state 143
+
+    (80) type -> LITERAL_S LSQUARE BOOL RSQUARE .
+
+    ASSIGN          reduce using rule 80 (type -> LITERAL_S LSQUARE BOOL RSQUARE .)
+    COMMA           reduce using rule 80 (type -> LITERAL_S LSQUARE BOOL RSQUARE .)
+    RPAREN          reduce using rule 80 (type -> LITERAL_S LSQUARE BOOL RSQUARE .)
+
+
+state 144
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN . type_list RPAREN LCURL donate_statement_list RCURL
+    (66) type_list -> . type COMMA type_list
+    (67) type_list -> . type
+    (68) type_list -> . empty
+    (69) type -> . NUM
+    (70) type -> . STR
+    (71) type -> . BOOL
+    (72) type -> . LITERAL_A LSQUARE NUM RSQUARE
+    (73) type -> . LITERAL_A LSQUARE STR RSQUARE
+    (74) type -> . LITERAL_A LSQUARE BOOL RSQUARE
+    (75) type -> . LITERAL_Q LSQUARE NUM RSQUARE
+    (76) type -> . LITERAL_Q LSQUARE STR RSQUARE
+    (77) type -> . LITERAL_Q LSQUARE BOOL RSQUARE
+    (78) type -> . LITERAL_S LSQUARE NUM RSQUARE
+    (79) type -> . LITERAL_S LSQUARE STR RSQUARE
+    (80) type -> . LITERAL_S LSQUARE BOOL RSQUARE
+    (81) empty -> .
+
+    NUM             shift and go to state 65
+    STR             shift and go to state 66
+    BOOL            shift and go to state 67
+    LITERAL_A       shift and go to state 68
+    LITERAL_Q       shift and go to state 69
+    LITERAL_S       shift and go to state 70
+    RPAREN          reduce using rule 81 (empty -> .)
+
+    type_list                      shift and go to state 146
+    type                           shift and go to state 147
+    empty                          shift and go to state 148
+
+state 145
+
+    (27) conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .
+
+    BIRO            reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    SMALLBIRO       reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    ID              reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    LITERAL_A       reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    LITERAL_Q       reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    LITERAL_S       reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    $end            reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    RCURL           reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    LEAVE           reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    PROCEED         reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+    DONATE          reduce using rule 27 (conditional_statement -> BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL .)
+
+
+state 146
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list . RPAREN LCURL donate_statement_list RCURL
+
+    RPAREN          shift and go to state 149
+
+
+state 147
+
+    (66) type_list -> type . COMMA type_list
+    (67) type_list -> type .
+
+    COMMA           shift and go to state 150
+    RPAREN          reduce using rule 67 (type_list -> type .)
+
+
+state 148
+
+    (68) type_list -> empty .
+
+    RPAREN          reduce using rule 68 (type_list -> empty .)
+
+
+state 149
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN . LCURL donate_statement_list RCURL
+
+    LCURL           shift and go to state 151
+
+
+state 150
+
+    (66) type_list -> type COMMA . type_list
+    (66) type_list -> . type COMMA type_list
+    (67) type_list -> . type
+    (68) type_list -> . empty
+    (69) type -> . NUM
+    (70) type -> . STR
+    (71) type -> . BOOL
+    (72) type -> . LITERAL_A LSQUARE NUM RSQUARE
+    (73) type -> . LITERAL_A LSQUARE STR RSQUARE
+    (74) type -> . LITERAL_A LSQUARE BOOL RSQUARE
+    (75) type -> . LITERAL_Q LSQUARE NUM RSQUARE
+    (76) type -> . LITERAL_Q LSQUARE STR RSQUARE
+    (77) type -> . LITERAL_Q LSQUARE BOOL RSQUARE
+    (78) type -> . LITERAL_S LSQUARE NUM RSQUARE
+    (79) type -> . LITERAL_S LSQUARE STR RSQUARE
+    (80) type -> . LITERAL_S LSQUARE BOOL RSQUARE
+    (81) empty -> .
+
+    NUM             shift and go to state 65
+    STR             shift and go to state 66
+    BOOL            shift and go to state 67
+    LITERAL_A       shift and go to state 68
+    LITERAL_Q       shift and go to state 69
+    LITERAL_S       shift and go to state 70
+    RPAREN          reduce using rule 81 (empty -> .)
+
+    type                           shift and go to state 147
+    type_list                      shift and go to state 152
+    empty                          shift and go to state 148
+
+state 151
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL . donate_statement_list RCURL
+    (34) donate_statement_list -> . donate_statement donate_statement_list
+    (35) donate_statement_list -> . donate_statement
+    (36) donate_statement -> . statement_list
+    (37) donate_statement -> . DONATE expression
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for DONATE resolved as shift
+    DONATE          shift and go to state 156
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+    RCURL           reduce using rule 81 (empty -> .)
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+
+    donate_statement_list          shift and go to state 153
+    donate_statement               shift and go to state 154
+    statement_list                 shift and go to state 155
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 152
+
+    (66) type_list -> type COMMA type_list .
+
+    RPAREN          reduce using rule 66 (type_list -> type COMMA type_list .)
+
+
+state 153
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list . RCURL
+
+    RCURL           shift and go to state 157
+
+
+state 154
+
+    (34) donate_statement_list -> donate_statement . donate_statement_list
+    (35) donate_statement_list -> donate_statement .
+    (34) donate_statement_list -> . donate_statement donate_statement_list
+    (35) donate_statement_list -> . donate_statement
+    (36) donate_statement -> . statement_list
+    (37) donate_statement -> . DONATE expression
+    (2) statement_list -> . statement statement_list
+    (3) statement_list -> . statement
+    (4) statement -> . variable_declaration
+    (5) statement -> . variable_assignment
+    (6) statement -> . conditional_statement
+    (7) statement -> . array_declaration
+    (8) statement -> . queue_declaration
+    (9) statement -> . stack_declaration
+    (10) statement -> . try_block
+    (11) statement -> . catch_block
+    (12) statement -> . loop_statement
+    (13) statement -> . function_declaration
+    (14) statement -> . function_call
+    (15) statement -> . builtin_call
+    (16) statement -> . empty
+    (17) variable_declaration -> . BIRO ID COLON type ASSIGN assigned_expression
+    (18) variable_declaration -> . SMALLBIRO ID COLON type ASSIGN assigned_expression
+    (19) variable_assignment -> . ID ASSIGN assigned_expression
+    (27) conditional_statement -> . BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+    (24) array_declaration -> . LITERAL_A LSQUARE expression_list RSQUARE
+    (25) queue_declaration -> . LITERAL_Q LSQUARE expression_list RSQUARE
+    (26) stack_declaration -> . LITERAL_S LSQUARE expression_list RSQUARE
+    (28) try_block -> . BIRO ATTEMPT LCURL statement_list RCURL
+    (29) catch_block -> . BIRO ARREST LCURL statement_list RCURL
+    (30) loop_statement -> . BIRO LOOP LCURL control_flow_statements_list RCURL
+    (31) function_declaration -> . BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+    (33) builtin_call -> . BIRO DOT function_call
+    (81) empty -> .
+
+  ! shift/reduce conflict for BIRO resolved as shift
+  ! shift/reduce conflict for SMALLBIRO resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for LITERAL_A resolved as shift
+  ! shift/reduce conflict for LITERAL_Q resolved as shift
+  ! shift/reduce conflict for LITERAL_S resolved as shift
+  ! shift/reduce conflict for DONATE resolved as shift
+  ! reduce/reduce conflict for RCURL resolved using rule 35 (donate_statement_list -> donate_statement .)
+    RCURL           reduce using rule 35 (donate_statement_list -> donate_statement .)
+    DONATE          shift and go to state 156
+    BIRO            shift and go to state 17
+    SMALLBIRO       shift and go to state 19
+    ID              shift and go to state 18
+    LITERAL_A       shift and go to state 20
+    LITERAL_Q       shift and go to state 21
+    LITERAL_S       shift and go to state 22
+
+  ! BIRO            [ reduce using rule 81 (empty -> .) ]
+  ! SMALLBIRO       [ reduce using rule 81 (empty -> .) ]
+  ! ID              [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_A       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_Q       [ reduce using rule 81 (empty -> .) ]
+  ! LITERAL_S       [ reduce using rule 81 (empty -> .) ]
+  ! DONATE          [ reduce using rule 81 (empty -> .) ]
+  ! RCURL           [ reduce using rule 81 (empty -> .) ]
+
+    donate_statement               shift and go to state 154
+    donate_statement_list          shift and go to state 158
+    statement_list                 shift and go to state 155
+    statement                      shift and go to state 3
+    variable_declaration           shift and go to state 4
+    variable_assignment            shift and go to state 5
+    conditional_statement          shift and go to state 6
+    array_declaration              shift and go to state 7
+    queue_declaration              shift and go to state 8
+    stack_declaration              shift and go to state 9
+    try_block                      shift and go to state 10
+    catch_block                    shift and go to state 11
+    loop_statement                 shift and go to state 12
+    function_declaration           shift and go to state 13
+    function_call                  shift and go to state 14
+    builtin_call                   shift and go to state 15
+    empty                          shift and go to state 16
+
+state 155
+
+    (36) donate_statement -> statement_list .
+
+    DONATE          reduce using rule 36 (donate_statement -> statement_list .)
+    BIRO            reduce using rule 36 (donate_statement -> statement_list .)
+    SMALLBIRO       reduce using rule 36 (donate_statement -> statement_list .)
+    ID              reduce using rule 36 (donate_statement -> statement_list .)
+    LITERAL_A       reduce using rule 36 (donate_statement -> statement_list .)
+    LITERAL_Q       reduce using rule 36 (donate_statement -> statement_list .)
+    LITERAL_S       reduce using rule 36 (donate_statement -> statement_list .)
+    RCURL           reduce using rule 36 (donate_statement -> statement_list .)
+
+
+state 156
+
+    (37) donate_statement -> DONATE . expression
+    (44) expression -> . ID
+    (45) expression -> . STRING
+    (46) expression -> . NUMBER
+    (47) expression -> . TRUE
+    (48) expression -> . FALSE
+    (49) expression -> . builtin_call
+    (50) expression -> . function_call
+    (51) expression -> . expression PLUS expression
+    (52) expression -> . expression MINUS expression
+    (53) expression -> . expression ASTERISK expression
+    (54) expression -> . expression DIVIDE expression
+    (55) expression -> . expression EQUALS expression
+    (56) expression -> . expression MORE expression
+    (57) expression -> . expression LESS expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (33) builtin_call -> . BIRO DOT function_call
+    (32) function_call -> . ID LPAREN expression_list RPAREN
+
+    ID              shift and go to state 40
+    STRING          shift and go to state 41
+    NUMBER          shift and go to state 42
+    TRUE            shift and go to state 43
+    FALSE           shift and go to state 44
+    BIRO            shift and go to state 38
+
+    expression                     shift and go to state 159
+    builtin_call                   shift and go to state 45
+    function_call                  shift and go to state 46
+
+state 157
+
+    (31) function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .
+
+    BIRO            reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    SMALLBIRO       reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    ID              reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    LITERAL_A       reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    LITERAL_Q       reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    LITERAL_S       reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    $end            reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    RCURL           reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    LEAVE           reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    PROCEED         reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+    DONATE          reduce using rule 31 (function_declaration -> BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL .)
+
+
+state 158
+
+    (34) donate_statement_list -> donate_statement donate_statement_list .
+
+    RCURL           reduce using rule 34 (donate_statement_list -> donate_statement donate_statement_list .)
+
+
+state 159
+
+    (37) donate_statement -> DONATE expression .
+    (51) expression -> expression . PLUS expression
+    (52) expression -> expression . MINUS expression
+    (53) expression -> expression . ASTERISK expression
+    (54) expression -> expression . DIVIDE expression
+    (55) expression -> expression . EQUALS expression
+    (56) expression -> expression . MORE expression
+    (57) expression -> expression . LESS expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+
+    DONATE          reduce using rule 37 (donate_statement -> DONATE expression .)
+    BIRO            reduce using rule 37 (donate_statement -> DONATE expression .)
+    SMALLBIRO       reduce using rule 37 (donate_statement -> DONATE expression .)
+    ID              reduce using rule 37 (donate_statement -> DONATE expression .)
+    LITERAL_A       reduce using rule 37 (donate_statement -> DONATE expression .)
+    LITERAL_Q       reduce using rule 37 (donate_statement -> DONATE expression .)
+    LITERAL_S       reduce using rule 37 (donate_statement -> DONATE expression .)
+    RCURL           reduce using rule 37 (donate_statement -> DONATE expression .)
+    PLUS            shift and go to state 75
+    MINUS           shift and go to state 76
+    ASTERISK        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    EQUALS          shift and go to state 79
+    MORE            shift and go to state 80
+    LESS            shift and go to state 81
+    AND             shift and go to state 82
+    OR              shift and go to state 83
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for BIRO in state 0 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 0 resolved as shift
+WARNING: shift/reduce conflict for ID in state 0 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 0 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 0 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 0 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 3 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 3 resolved as shift
+WARNING: shift/reduce conflict for ID in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 3 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 3 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 3 resolved as shift
+WARNING: shift/reduce conflict for ID in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 3 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 3 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 47 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 47 resolved as shift
+WARNING: shift/reduce conflict for ID in state 47 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 47 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 47 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 47 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 48 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 48 resolved as shift
+WARNING: shift/reduce conflict for ID in state 48 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 48 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 48 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 48 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 49 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 49 resolved as shift
+WARNING: shift/reduce conflict for ID in state 49 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 49 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 49 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 49 resolved as shift
+WARNING: shift/reduce conflict for LEAVE in state 49 resolved as shift
+WARNING: shift/reduce conflict for PROCEED in state 49 resolved as shift
+WARNING: shift/reduce conflict for DONATE in state 49 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 87 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 87 resolved as shift
+WARNING: shift/reduce conflict for ID in state 87 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 87 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 87 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 87 resolved as shift
+WARNING: shift/reduce conflict for LEAVE in state 87 resolved as shift
+WARNING: shift/reduce conflict for PROCEED in state 87 resolved as shift
+WARNING: shift/reduce conflict for DONATE in state 87 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 104 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 104 resolved as shift
+WARNING: shift/reduce conflict for ID in state 104 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 104 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 104 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 104 resolved as shift
+WARNING: shift/reduce conflict for LEAVE in state 104 resolved as shift
+WARNING: shift/reduce conflict for PROCEED in state 104 resolved as shift
+WARNING: shift/reduce conflict for DONATE in state 104 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 151 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 151 resolved as shift
+WARNING: shift/reduce conflict for ID in state 151 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 151 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 151 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 151 resolved as shift
+WARNING: shift/reduce conflict for DONATE in state 151 resolved as shift
+WARNING: shift/reduce conflict for BIRO in state 154 resolved as shift
+WARNING: shift/reduce conflict for SMALLBIRO in state 154 resolved as shift
+WARNING: shift/reduce conflict for ID in state 154 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_A in state 154 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_Q in state 154 resolved as shift
+WARNING: shift/reduce conflict for LITERAL_S in state 154 resolved as shift
+WARNING: shift/reduce conflict for DONATE in state 154 resolved as shift
+WARNING: reduce/reduce conflict in state 3 resolved using rule (statement_list -> statement)
+WARNING: rejected rule (empty -> <empty>) in state 3
+WARNING: reduce/reduce conflict in state 87 resolved using rule (control_flow_statements_list -> control_flow_statements)
+WARNING: rejected rule (empty -> <empty>) in state 87
+WARNING: reduce/reduce conflict in state 154 resolved using rule (donate_statement_list -> donate_statement)
+WARNING: rejected rule (empty -> <empty>) in state 154

@@ -1,0 +1,98 @@
+program : statement_list
+
+statement_list : statement statement_list
+              | statement
+
+statement : variable_declaration
+          | variable_assignment
+          | conditional_statement
+          | array_declaration
+          | queue_declaration
+          | stack_declaration
+          | try_block
+          | catch_block
+          | loop_statement
+          | function_declaration
+          | function_call
+          | builtin_call
+          | empty
+
+variable_declaration : BIRO ID COLON type ASSIGN assigned_expression
+                     | SMALLBIRO ID COLON type ASSIGN assigned_expression
+
+variable_assignment : ID ASSIGN assigned_expression
+
+assigned_expression : expression
+                    | array_declaration
+                    | queue_declaration
+                    | stack_declaration
+
+array_declaration : LITERAL_A LSQUARE expression_list RSQUARE
+
+queue_declaration : LITERAL_Q LSQUARE expression_list RSQUARE
+
+stack_declaration : LITERAL_S LSQUARE expression_list RSQUARE
+
+conditional_statement : BIRO IS expression QUESMARK LCURL control_flow_statements_list RCURL
+
+try_block : BIRO ATTEMPT LCURL statement_list RCURL
+
+catch_block : BIRO ARREST LCURL statement_list RCURL
+
+loop_statement : BIRO LOOP LCURL control_flow_statements_list RCURL
+
+function_declaration : BIRO ID LPAREN arg_list RPAREN COLON LPAREN type_list RPAREN LCURL donate_statement_list RCURL
+
+function_call : ID LPAREN expression_list RPAREN 
+
+builtin_call : BIRO DOT function_call
+
+donate_statement_list : donate_statement donate_statement_list | donate_statement
+
+donate_statement : statement_list | DONATE expression
+
+control_flow_statements_list : control_flow_statements control_flow_statements_list
+                             | control_flow_statements
+
+control_flow_statements : statement_list | LEAVE | PROCEED | DONATE expression
+
+expression : ID
+           | STRING
+           | NUMBER
+           | TRUE
+           | FALSE
+           | expression PLUS expression
+           | expression MINUS expression
+           | expression ASTERISK expression
+           | expression DIVIDE expression
+           | expression EQUALS expression
+           | expression MORE expression
+           | expression LESS expression
+           | expression AND expression
+           | expression OR expression
+           | builtin_call
+           | function_call
+
+expression_list : expression COMMA expression_list
+                | expression
+
+arg_list : ID COMMA arg_list 
+         | ID
+
+type_list : type COMMA type_list
+          | type
+
+type : NUM 
+     | STR 
+     | BOOL 
+     | LITERAL_A LSQUARE NUM RSQUARE
+     | LITERAL_A LSQUARE STR RSQUARE
+     | LITERAL_A LSQUARE BOOL RSQUARE
+     | LITERAL_Q LSQUARE NUM RSQUARE
+     | LITERAL_Q LSQUARE STR RSQUARE
+     | LITERAL_Q LSQUARE BOOL RSQUARE
+     | LITERAL_S LSQUARE NUM RSQUARE
+     | LITERAL_S LSQUARE STR RSQUARE
+     | LITERAL_S LSQUARE BOOL RSQUARE
+
+empty : 
